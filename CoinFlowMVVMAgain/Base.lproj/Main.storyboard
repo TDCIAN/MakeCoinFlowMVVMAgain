@@ -8,14 +8,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Chart-->
         <scene sceneID="gCH-7i-x4V">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4q4-FC-AQo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="w24-Or-uPk"/>
+                    <tabBarItem key="tabBarItem" title="Chart" image="chart.bar.xaxis" catalog="system" id="w24-Or-uPk"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J2K-1K-N5K">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="J2K-1K-N5K">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -27,62 +27,62 @@
             </objects>
             <point key="canvasLocation" x="-875" y="871"/>
         </scene>
-        <!--View Controller-->
+        <!--Chart-->
         <scene sceneID="hxB-Rp-GeK">
             <objects>
-                <viewController id="hff-iT-WoU" sceneMemberID="viewController">
+                <viewController id="hff-iT-WoU" customClass="ChartListViewController" customModule="CoinFlowMVVMAgain" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FIL-17-xfm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="pVp-A6-Siu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="scA-XY-kbq"/>
+                    <navigationItem key="navigationItem" title="Chart" id="scA-XY-kbq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bty-Z7-wR2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-875" y="1637"/>
         </scene>
-        <!--View Controller-->
+        <!--News-->
         <scene sceneID="rH5-Tb-Lu9">
             <objects>
-                <viewController id="XFP-DV-JDV" sceneMemberID="viewController">
+                <viewController id="XFP-DV-JDV" customClass="NewsViewController" customModule="CoinFlowMVVMAgain" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hLP-nI-rKI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Pxw-vi-5zx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="NfV-Go-USE"/>
+                    <navigationItem key="navigationItem" title="News" id="NfV-Go-USE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqP-vw-gYC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="29" y="1637"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting-->
         <scene sceneID="Cid-X4-gHN">
             <objects>
-                <viewController id="7Hl-Cc-VtI" sceneMemberID="viewController">
+                <viewController id="7Hl-Cc-VtI" customClass="SettingViewController" customModule="CoinFlowMVVMAgain" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hsE-rL-QET">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="aZB-Lj-1kW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="r09-FP-y1o"/>
+                    <navigationItem key="navigationItem" title="Setting" id="r09-FP-y1o"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zf-4w-4xv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1013" y="1637"/>
         </scene>
-        <!--Item-->
+        <!--News-->
         <scene sceneID="qxj-sF-f2r">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Za4-NP-vXj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Vxd-sM-H61"/>
+                    <tabBarItem key="tabBarItem" title="News" image="newspaper.fill" catalog="system" id="Vxd-sM-H61"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9jt-bD-fn7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="9jt-bD-fn7">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -94,14 +94,14 @@
             </objects>
             <point key="canvasLocation" x="29" y="871"/>
         </scene>
-        <!--Item-->
+        <!--Setting-->
         <scene sceneID="XCR-oH-BnG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X2e-sp-yDy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="j74-h7-UPD"/>
+                    <tabBarItem key="tabBarItem" title="Setting" image="gearshape.fill" catalog="system" id="j74-h7-UPD"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sTb-mu-U9D">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="sTb-mu-U9D">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -134,6 +134,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
