@@ -13,6 +13,10 @@
 		187C19AB25B63BFD00FD8770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187C19A925B63BFD00FD8770 /* Main.storyboard */; };
 		187C19AD25B63BFE00FD8770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187C19AC25B63BFE00FD8770 /* Assets.xcassets */; };
 		187C19B025B63BFE00FD8770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187C19AE25B63BFE00FD8770 /* LaunchScreen.storyboard */; };
+		187C19B925B640A700FD8770 /* ChartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19B825B640A700FD8770 /* ChartListViewController.swift */; };
+		187C19BC25B640B100FD8770 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19BB25B640B100FD8770 /* NewsViewController.swift */; };
+		187C19BF25B640BA00FD8770 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19BE25B640BA00FD8770 /* SettingViewController.swift */; };
+		187C19C525B6412900FD8770 /* ChartDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19C425B6412900FD8770 /* ChartDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		187C19AC25B63BFE00FD8770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		187C19AF25B63BFE00FD8770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		187C19B125B63BFE00FD8770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		187C19B825B640A700FD8770 /* ChartListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartListViewController.swift; sourceTree = "<group>"; };
+		187C19BB25B640B100FD8770 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		187C19BE25B640BA00FD8770 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		187C19C425B6412900FD8770 /* ChartDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,9 @@
 		187C19A225B63BFD00FD8770 /* CoinFlowMVVMAgain */ = {
 			isa = PBXGroup;
 			children = (
+				187C19C325B640E900FD8770 /* Chart */,
+				187C19C225B640E600FD8770 /* News */,
+				187C19C125B640D800FD8770 /* Setting */,
 				187C19A325B63BFD00FD8770 /* AppDelegate.swift */,
 				187C19A525B63BFD00FD8770 /* SceneDelegate.swift */,
 				187C19A725B63BFD00FD8770 /* ViewController.swift */,
@@ -65,6 +76,31 @@
 				187C19B125B63BFE00FD8770 /* Info.plist */,
 			);
 			path = CoinFlowMVVMAgain;
+			sourceTree = "<group>";
+		};
+		187C19C125B640D800FD8770 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				187C19BE25B640BA00FD8770 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		187C19C225B640E600FD8770 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				187C19BB25B640B100FD8770 /* NewsViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		187C19C325B640E900FD8770 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				187C19B825B640A700FD8770 /* ChartListViewController.swift */,
+				187C19C425B6412900FD8770 /* ChartDetailViewController.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +173,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187C19C525B6412900FD8770 /* ChartDetailViewController.swift in Sources */,
 				187C19A825B63BFD00FD8770 /* ViewController.swift in Sources */,
+				187C19B925B640A700FD8770 /* ChartListViewController.swift in Sources */,
 				187C19A425B63BFD00FD8770 /* AppDelegate.swift in Sources */,
+				187C19BC25B640B100FD8770 /* NewsViewController.swift in Sources */,
 				187C19A625B63BFD00FD8770 /* SceneDelegate.swift in Sources */,
+				187C19BF25B640BA00FD8770 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
