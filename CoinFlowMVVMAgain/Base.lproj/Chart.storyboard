@@ -40,7 +40,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="Www-Xq-rV2" kind="show" id="0Bn-Sg-Ycq"/>
+                                    <action selector="buttonTapped:" destination="hff-iT-WoU" eventType="touchUpInside" id="Jmj-qm-9A1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -56,7 +56,7 @@
         <!--Chart Detail View Controller-->
         <scene sceneID="dmr-ns-2Y8">
             <objects>
-                <viewController id="Www-Xq-rV2" customClass="ChartDetailViewController" customModule="CoinFlowMVVMAgain" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChartDetailViewController" id="Www-Xq-rV2" customClass="ChartDetailViewController" customModule="CoinFlowMVVMAgain" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j7c-2g-4JL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
