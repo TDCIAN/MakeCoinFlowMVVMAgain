@@ -29,7 +29,7 @@ extension ChartListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChartCardCell", for: indexPath) as? ChartCardCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .red
+        cell.backgroundColor = UIColor.randomColor()
         return cell
     }
 }
