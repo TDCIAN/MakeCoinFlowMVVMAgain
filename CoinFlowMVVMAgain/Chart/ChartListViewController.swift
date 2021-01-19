@@ -27,10 +27,20 @@ extension ChartListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChartCardCell", for: indexPath) as? ChartCardCell else { return UICollectionViewCell() }
+        cell.backgroundColor = .red
+        return cell
     }
+}
+
+extension ChartListViewController: UICollectionViewDelegateFlowLayout {
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width: CGFloat = collectionView.frame.width - 20 * 2 - 15
+        let height: CGFloat = 200
+        return CGSize(width: width, height: height)
+    }
 }
 
 class ChartCardCell: UICollectionViewCell {
