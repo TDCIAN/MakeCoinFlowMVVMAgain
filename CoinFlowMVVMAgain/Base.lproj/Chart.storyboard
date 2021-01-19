@@ -66,12 +66,22 @@
                                             <outlet property="delegate" destination="hff-iT-WoU" id="vvG-eI-YNt"/>
                                         </connections>
                                     </collectionView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vFA-if-upg">
+                                        <rect key="frame" x="0.0" y="220" width="414" height="1500"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1500" id="PB6-gX-96b"/>
+                                        </constraints>
+                                    </tableView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="vFA-if-upg" secondAttribute="bottom" id="63t-eY-I3J"/>
                                     <constraint firstAttribute="trailing" secondItem="eKp-4q-gEV" secondAttribute="trailing" id="JfD-9Y-QNv"/>
                                     <constraint firstItem="eKp-4q-gEV" firstAttribute="leading" secondItem="Eua-st-4oa" secondAttribute="leading" id="K50-NG-m20"/>
+                                    <constraint firstAttribute="trailing" secondItem="vFA-if-upg" secondAttribute="trailing" id="Vu2-x5-HyD"/>
                                     <constraint firstItem="eKp-4q-gEV" firstAttribute="top" secondItem="Eua-st-4oa" secondAttribute="top" id="fHw-Wi-9Aj"/>
-                                    <constraint firstAttribute="bottom" secondItem="eKp-4q-gEV" secondAttribute="bottom" constant="522" id="rDq-E4-bik"/>
+                                    <constraint firstItem="vFA-if-upg" firstAttribute="leading" secondItem="Eua-st-4oa" secondAttribute="leading" id="jDe-Yd-hzj"/>
+                                    <constraint firstItem="vFA-if-upg" firstAttribute="top" secondItem="eKp-4q-gEV" secondAttribute="bottom" constant="20" id="xdr-rX-TNk"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
