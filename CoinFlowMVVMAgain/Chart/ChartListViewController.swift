@@ -14,11 +14,7 @@ class ChartListViewController: UIViewController {
 
     }
     
-    @IBAction func buttonTapped(_ sender: UIButton) {
-        // Detail View로 푸쉬하자
-        // - Detail VC 인스턴스
-        // - NavigationVC 푸쉬 시키자
-        
+    private func showDetail() {
         let storyboard = UIStoryboard(name: "Chart", bundle: .main)
         let chartDetailViewController = storyboard.instantiateViewController(withIdentifier: "ChartDetailViewController")
         navigationController?.pushViewController(chartDetailViewController, animated: true)
