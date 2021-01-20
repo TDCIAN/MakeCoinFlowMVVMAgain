@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Za4-NP-vXj">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,16 +13,42 @@
             <objects>
                 <viewController id="XFP-DV-JDV" customClass="NewsViewController" customModule="CoinFlowMVVMAgain" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hLP-nI-rKI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jTC-mF-ZgT">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewsListCell" id="rDG-5q-cZG" customClass="NewsListCell" customModule="CoinFlowMVVMAgain" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rDG-5q-cZG" id="ssU-bN-tPM">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="XFP-DV-JDV" id="fh1-8Y-TjJ"/>
+                                    <outlet property="delegate" destination="XFP-DV-JDV" id="fzF-Pr-rK9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Pxw-vi-5zx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jTC-mF-ZgT" firstAttribute="leading" secondItem="Pxw-vi-5zx" secondAttribute="leading" id="Jbo-Hw-I3e"/>
+                            <constraint firstItem="Pxw-vi-5zx" firstAttribute="trailing" secondItem="jTC-mF-ZgT" secondAttribute="trailing" id="KEg-hk-Smq"/>
+                            <constraint firstItem="Pxw-vi-5zx" firstAttribute="bottom" secondItem="jTC-mF-ZgT" secondAttribute="bottom" id="noL-JI-Eoy"/>
+                            <constraint firstItem="jTC-mF-ZgT" firstAttribute="top" secondItem="Pxw-vi-5zx" secondAttribute="top" id="ujW-th-yb8"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="News" id="NfV-Go-USE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqP-vw-gYC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29" y="1637"/>
+            <point key="canvasLocation" x="28.985507246376812" y="1636.6071428571429"/>
         </scene>
         <!--News-->
         <scene sceneID="qxj-sF-f2r">
