@@ -23,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		183AB11525B91C5600E8B0C0 /* API_TEST.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = API_TEST.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1844DA7E25B78B6F001D3467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CoinFlowMVVMAgain/Base.lproj/Chart.storyboard; sourceTree = SOURCE_ROOT; };
 		1844DA8125B78B8D001D3467 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = SOURCE_ROOT; };
 		1844DA8525B78B9D001D3467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CoinFlowMVVMAgain/Base.lproj/Setting.storyboard; sourceTree = SOURCE_ROOT; };
@@ -88,6 +89,7 @@
 				187C19AE25B63BFE00FD8770 /* LaunchScreen.storyboard */,
 				187C19B125B63BFE00FD8770 /* Info.plist */,
 				1844DA8B25B79989001D3467 /* Extension */,
+				183AB11525B91C5600E8B0C0 /* API_TEST.playground */,
 			);
 			path = CoinFlowMVVMAgain;
 			sourceTree = "<group>";
