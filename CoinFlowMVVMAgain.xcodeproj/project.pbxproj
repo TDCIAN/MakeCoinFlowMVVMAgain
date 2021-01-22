@@ -20,6 +20,7 @@
 		187C19BC25B640B100FD8770 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19BB25B640B100FD8770 /* NewsViewController.swift */; };
 		187C19BF25B640BA00FD8770 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19BE25B640BA00FD8770 /* SettingViewController.swift */; };
 		187C19C525B6412900FD8770 /* ChartDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19C425B6412900FD8770 /* ChartDetailViewController.swift */; };
+		8FD081D59C1FCF8EB73DDF88 /* Pods_CoinFlowMVVMAgain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2066E1A9B19D50FBCFA13B48 /* Pods_CoinFlowMVVMAgain.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,9 @@
 		187C19BB25B640B100FD8770 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		187C19BE25B640BA00FD8770 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		187C19C425B6412900FD8770 /* ChartDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDetailViewController.swift; sourceTree = "<group>"; };
+		2066E1A9B19D50FBCFA13B48 /* Pods_CoinFlowMVVMAgain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinFlowMVVMAgain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2405FB80249FDBA3395F11FB /* Pods-CoinFlowMVVMAgain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinFlowMVVMAgain.debug.xcconfig"; path = "Target Support Files/Pods-CoinFlowMVVMAgain/Pods-CoinFlowMVVMAgain.debug.xcconfig"; sourceTree = "<group>"; };
+		934FA976911E7A4A843AE699 /* Pods-CoinFlowMVVMAgain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinFlowMVVMAgain.release.xcconfig"; path = "Target Support Files/Pods-CoinFlowMVVMAgain/Pods-CoinFlowMVVMAgain.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FD081D59C1FCF8EB73DDF88 /* Pods_CoinFlowMVVMAgain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,8 @@
 			children = (
 				187C19A225B63BFD00FD8770 /* CoinFlowMVVMAgain */,
 				187C19A125B63BFD00FD8770 /* Products */,
+				DE1E18A1B2C9C28E2D1B4402 /* Pods */,
+				E0F459D2BB405F77FB492303 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +129,24 @@
 			path = Chart;
 			sourceTree = "<group>";
 		};
+		DE1E18A1B2C9C28E2D1B4402 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2405FB80249FDBA3395F11FB /* Pods-CoinFlowMVVMAgain.debug.xcconfig */,
+				934FA976911E7A4A843AE699 /* Pods-CoinFlowMVVMAgain.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E0F459D2BB405F77FB492303 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2066E1A9B19D50FBCFA13B48 /* Pods_CoinFlowMVVMAgain.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,9 +154,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 187C19B425B63BFE00FD8770 /* Build configuration list for PBXNativeTarget "CoinFlowMVVMAgain" */;
 			buildPhases = (
+				383CF10396487E89343D3127 /* [CP] Check Pods Manifest.lock */,
 				187C199C25B63BFD00FD8770 /* Sources */,
 				187C199D25B63BFD00FD8770 /* Frameworks */,
 				187C199E25B63BFD00FD8770 /* Resources */,
+				23999DC4A9D2943ECE3047E7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,6 +216,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		23999DC4A9D2943ECE3047E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoinFlowMVVMAgain/Pods-CoinFlowMVVMAgain-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoinFlowMVVMAgain/Pods-CoinFlowMVVMAgain-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoinFlowMVVMAgain/Pods-CoinFlowMVVMAgain-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		383CF10396487E89343D3127 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoinFlowMVVMAgain-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		187C199C25B63BFD00FD8770 /* Sources */ = {
@@ -361,6 +430,7 @@
 		};
 		187C19B525B63BFE00FD8770 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2405FB80249FDBA3395F11FB /* Pods-CoinFlowMVVMAgain.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -380,6 +450,7 @@
 		};
 		187C19B625B63BFE00FD8770 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 934FA976911E7A4A843AE699 /* Pods-CoinFlowMVVMAgain.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
