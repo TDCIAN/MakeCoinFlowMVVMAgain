@@ -60,14 +60,15 @@ let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
 AF.request(newsURL).responseJSON { response in
     switch response.result {
     case .success(let value):
-        let json = JSON(value)
-        let decoder = JSONDecoder()
-        do {
-//            let response = try decoder.decode([NewsResponse].self, from: json)
-            print("리스폰스: \(response)")
-        } catch {
-            
-        }
+//        print("밸류: \(value)")
+        let string = String(data: value as! Data, encoding: .utf8)
+        print("스트링: \(string)")
+//        if let data = value as? Data {
+//            print("데이터 --> : \(data)")
+//            let decoder = JSONDecoder()
+//            let responseData = try decoder.decode([NewsResponse].self, from: data)
+//            print("리스폰스-->: \(responseData)")
+//        }
 //        print("성공했네: \(json)")
     case .failure(let error):
         print("실패했네: \(error.localizedDescription)")
