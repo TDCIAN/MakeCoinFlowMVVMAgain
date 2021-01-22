@@ -19,7 +19,7 @@ struct Article: Codable {
     let title: String
     let link: String
     let date: String
-    let timestamp: Int
+    let timestamp: TimeInterval
     let description: String
     let imageURL: String
     
@@ -48,7 +48,7 @@ let taskWithNewsURL = urlSession.dataTask(with: newsURL) { (data, response, erro
     let decoder = JSONDecoder()
     do {
         let response = try decoder.decode([NewsResponse].self, from: responseData)
-        print("리스폰스 --> :\(response)")
+        print("리스폰스 --> :\(response.first)")
     } catch {
         print("--> error: \(error.localizedDescription)")
     }
