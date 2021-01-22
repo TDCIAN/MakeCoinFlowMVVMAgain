@@ -1,4 +1,5 @@
 import UIKit
+import Alamofire
 
 let urlSession = URLSession.shared
 
@@ -54,3 +55,19 @@ let taskWithNewsURL = urlSession.dataTask(with: newsURL) { (data, response, erro
     }
 }
 taskWithNewsURL.resume()
+
+AF.request(newsURL).responseJSON { response in
+    switch response.result {
+    case .success(let value):
+        let responseData = value as! Data
+        let decoder = JSONDecoder()
+        do {
+            let consequence = try decoder.decode([NewsResponse].self, from: responseData)
+            print("결과물: \(consequence)")
+        } catch {
+            
+        }
+    case .failure(let error):
+        print("실패했네: \(error.localizedDescription)")
+    }
+}
