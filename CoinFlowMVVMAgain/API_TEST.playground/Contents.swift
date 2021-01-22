@@ -47,7 +47,8 @@ let taskWithNewsURL = urlSession.dataTask(with: newsURL) { (data, response, erro
 //    print(string)
     let decoder = JSONDecoder()
     do {
-        let response = try decoder.decode(Article.self, from: responseData)
+        let response = try decoder.decode([NewsResponse].self, from: responseData)
+        print("리스폰스 --> :\(response)")
     } catch {
         print("--> error: \(error.localizedDescription)")
     }
