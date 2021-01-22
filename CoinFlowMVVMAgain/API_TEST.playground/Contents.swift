@@ -11,13 +11,26 @@ let urlSession = URLSession.shared
 //    "imageUrl": "http://coinbelly.com/api/images/3rdparty/coindesk.com_0.jpg"
 //},
 
+struct NewsResponse: Codable {
+    let articleArray: [Article]
+}
+
 struct Article: Codable {
     let title: String
     let link: String
     let date: String
     let timestamp: Int
     let description: String
-    let imageUrl: String
+    let imageURL: String
+    
+    enum CodingKeys: String, CodingKey {
+        case title
+        case link
+        case date
+        case timestamp
+        case description
+        case imageURL = "imageUrl"
+    }
 }
 
 let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
@@ -31,6 +44,12 @@ let taskWithNewsURL = urlSession.dataTask(with: newsURL) { (data, response, erro
     }
     guard let responseData = data else { return }
     let string = String(data: responseData, encoding: .utf8)
-    print(string)
+//    print(string)
+    let decoder = JSONDecoder()
+    do {
+        let response = try decoder.decode(Article.self, from: responseData)
+    } catch {
+        print("--> error: \(error.localizedDescription)")
+    }
 }
 taskWithNewsURL.resume()
