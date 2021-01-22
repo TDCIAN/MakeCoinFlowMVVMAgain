@@ -1,6 +1,10 @@
 import UIKit
 
-var str = "Hello, playground"
+let urlSession = URLSession.shared
 
-let urlSession = URLSessionConfiguration()
+let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
+
+let dataTask = urlSession.dataTask(with: newsURL) { (data, response, error) in
+        
+}
 
