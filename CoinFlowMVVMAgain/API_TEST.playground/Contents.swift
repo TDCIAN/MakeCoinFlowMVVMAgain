@@ -1,5 +1,6 @@
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 let urlSession = URLSession.shared
 
@@ -36,37 +37,38 @@ struct Article: Codable {
 
 let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
 
-let taskWithNewsURL = urlSession.dataTask(with: newsURL) { (data, response, error) in
-    let successRange = 200..<300
-    guard error == nil,
-          let statusCode = (response as? HTTPURLResponse)?.statusCode,
-          successRange.contains(statusCode) else {
-        return
-    }
-    guard let responseData = data else { return }
-    let string = String(data: responseData, encoding: .utf8)
-//    print(string)
-    let decoder = JSONDecoder()
-    do {
-        let response = try decoder.decode([NewsResponse].self, from: responseData)
-        print("리스폰스 --> :\(response.first)")
-    } catch {
-        print("--> error: \(error.localizedDescription)")
-    }
-}
-taskWithNewsURL.resume()
+//let taskWithNewsURL = urlSession.dataTask(with: newsURL) { (data, response, error) in
+//    let successRange = 200..<300
+//    guard error == nil,
+//          let statusCode = (response as? HTTPURLResponse)?.statusCode,
+//          successRange.contains(statusCode) else {
+//        return
+//    }
+//    guard let responseData = data else { return }
+//    let string = String(data: responseData, encoding: .utf8)
+////    print(string)
+//    let decoder = JSONDecoder()
+//    do {
+//        let response = try decoder.decode([NewsResponse].self, from: responseData)
+//        print("리스폰스 --> :\(response.first)")
+//    } catch {
+//        print("--> error: \(error.localizedDescription)")
+//    }
+//}
+//taskWithNewsURL.resume()
 
 AF.request(newsURL).responseJSON { response in
     switch response.result {
     case .success(let value):
-        let responseData = value as! Data
+        let json = JSON(value)
         let decoder = JSONDecoder()
         do {
-            let consequence = try decoder.decode([NewsResponse].self, from: responseData)
-            print("결과물: \(consequence)")
+//            let response = try decoder.decode([NewsResponse].self, from: json)
+            print("리스폰스: \(response)")
         } catch {
             
         }
+//        print("성공했네: \(json)")
     case .failure(let error):
         print("실패했네: \(error.localizedDescription)")
     }
