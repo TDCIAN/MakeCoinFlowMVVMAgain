@@ -57,20 +57,36 @@ let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
 //}
 //taskWithNewsURL.resume()
 
-AF.request(newsURL).responseJSON { response in
-    switch response.result {
-    case .success(let value):
-//        print("밸류: \(value)")
-        let string = String(data: value as! Data, encoding: .utf8)
-        print("스트링: \(string)")
-//        if let data = value as? Data {
-//            print("데이터 --> : \(data)")
-//            let decoder = JSONDecoder()
-//            let responseData = try decoder.decode([NewsResponse].self, from: data)
-//            print("리스폰스-->: \(responseData)")
-//        }
-//        print("성공했네: \(json)")
-    case .failure(let error):
-        print("실패했네: \(error.localizedDescription)")
-    }
+private var basicHeaders: HTTPHeaders = [
+    "Authorization": "Bearer ",
+    "Content-Type":"application/json",
+    "Accept": "application/json"
+]
+
+//AF.request(newsURL).responseJSON { response in
+//    switch response.result {
+//    case .success(let value):
+////        print("밸류: \(value)")
+//        let string = String(data: value as! Data, encoding: .utf8)
+//        print("스트링: \(string)")
+////        if let data = value as? Data {
+////            print("데이터 --> : \(data)")
+////            let decoder = JSONDecoder()
+////            let responseData = try decoder.decode([NewsResponse].self, from: data)
+////            print("리스폰스-->: \(responseData)")
+////        }
+////        print("성공했네: \(json)")
+//    case .failure(let error):
+//        print("실패했네: \(error.localizedDescription)")
+//    }
+//}
+
+AF.request(newsURL, method: .get, headers: basicHeaders)
+    .responseJSON { (responseData) in
+        switch responseData.result {
+        case .success(let successedResult):
+            print("결과물: \(successedResult)")
+        case .failure(let error):
+            print("실패임: \(error.localizedDescription)")
+        }
 }
