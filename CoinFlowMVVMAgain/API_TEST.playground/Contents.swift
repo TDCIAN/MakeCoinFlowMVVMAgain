@@ -63,17 +63,9 @@ AF.request(newsURL)
         case .success(let successedResult):
 //            print("결과물: \(successedResult)")
             let json = JSON(successedResult)
-            let jsonEncoder = JSONEncoder()
-            if let result = successedResult as! Data {
-                let jsonData = try? jsonEncoder.encode(result)
-                if let jsonData = jsonData, let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print("제이슨스트링: \(jsonString)")
-                }
-            } else {
-                print("석세스드리절트: \(successedResult)")
-            }
-            
-//            print("제이슨: \(json)")
+
+            print("제이슨: \(json)")
+
         case .failure(let error):
             print("실패임: \(error.localizedDescription)")
         }
