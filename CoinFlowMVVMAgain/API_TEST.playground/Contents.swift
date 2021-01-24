@@ -37,25 +37,25 @@ struct Article: Codable {
 
 let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
 
-//let taskWithNewsURL = urlSession.dataTask(with: newsURL) { (data, response, error) in
-//    let successRange = 200..<300
-//    guard error == nil,
-//          let statusCode = (response as? HTTPURLResponse)?.statusCode,
-//          successRange.contains(statusCode) else {
-//        return
-//    }
-//    guard let responseData = data else { return }
-//    let string = String(data: responseData, encoding: .utf8)
-////    print(string)
-//    let decoder = JSONDecoder()
-//    do {
-//        let response = try decoder.decode([NewsResponse].self, from: responseData)
-//        print("리스폰스 --> :\(response.first)")
-//    } catch {
-//        print("--> error: \(error.localizedDescription)")
-//    }
-//}
-//taskWithNewsURL.resume()
+let taskWithNewsURL = urlSession.dataTask(with: newsURL) { (data, response, error) in
+    let successRange = 200..<300
+    guard error == nil,
+          let statusCode = (response as? HTTPURLResponse)?.statusCode,
+          successRange.contains(statusCode) else {
+        return
+    }
+    guard let responseData = data else { return }
+    let string = String(data: responseData, encoding: .utf8)
+//    print(string)
+    let decoder = JSONDecoder()
+    do {
+        let response = try decoder.decode([NewsResponse].self, from: responseData)
+        print("리스폰스 --> :\(response.first)")
+    } catch {
+        print("--> error: \(error.localizedDescription)")
+    }
+}
+taskWithNewsURL.resume()
 
 AF.request(newsURL)
     .responseJSON { (responseData) in
@@ -63,9 +63,10 @@ AF.request(newsURL)
         case .success(let successedResult):
 //            print("결과물: \(successedResult)")
             let json = JSON(successedResult)
-
+            let jsonString = String(data: json, encoding: .utf8)
             print("제이슨: \(json)")
-
+            let decoder = JSONDecoder()
+            
         case .failure(let error):
             print("실패임: \(error.localizedDescription)")
         }
