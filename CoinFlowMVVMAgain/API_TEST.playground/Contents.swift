@@ -86,9 +86,11 @@ struct CoinListResponse: Codable {
 
 struct RawData: Codable {
     let btc: Coin
+    let eth: Coin
     
     enum CodingKeys: String, CodingKey {
         case btc = "BTC"
+        case eth = "ETH"
     }
 }
 
@@ -138,7 +140,7 @@ AF.request(coinListURL)
                 let string = String(data: coinListData, encoding: .utf8)
 //                print("스트링: \(string)")
                 let response = try decoder.decode(CoinListResponse.self, from: coinListData)
-                print("코인리스트 리스폰스 --> :\(response)")
+                print("코인리스트 리스폰스 --> :\(response.raw)")
             } catch {
                 
             }
