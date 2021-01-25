@@ -76,14 +76,64 @@ struct Article: Codable {
 //        }
 //}
 
+struct CoinListResponse: Codable {
+    let raw: RawData
+    
+    enum CodingKeys: String, CodingKey {
+        case raw = "RAW"
+    }
+}
+
+struct RawData: Codable {
+    let btc: Coin
+    
+    enum CodingKeys: String, CodingKey {
+        case btc = "BTC"
+    }
+}
+
+struct Coin: Codable {
+    let usd: CurrencyInfo
+    
+    enum CodingKeys: String, CodingKey {
+        case usd = "USD"
+    }
+}
+
+struct CurrencyInfo: Codable {
+    let price: Double
+    let changeLast24H: Double
+    let changePercentLast24H: Double
+    let market: String
+    
+    enum CodingKeys: String, CodingKey {
+        case price = "PRICE"
+        case changeLast24H = "CHANGE24HOUR"
+        case changePercentLast24H = "CHANGEPCT24HOUR"
+        case market = "LASTMARKET"
+    }
+}
+
+//"LASTMARKET": "Coinbase",
+//"VOLUMEHOUR": 426.5735325400038,
+//"VOLUMEHOURTO": 14310564.979030505,
+//"OPENHOUR": 32802.28,
+//"HIGHHOUR": 32897.76,
+//"LOWHOUR": 32641.85,
+//"TOPTIERVOLUME24HOUR": 35854.907198400004,
+//"TOPTIERVOLUME24HOURTO": 1154980952.6058037,
+//"CHANGE24HOUR": 166.63000000000102,
+//"CHANGEPCT24HOUR": 0.5127485544232633,
+
 let coinListURL = URL(string: "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG&tsyms=USD")!
 AF.request(coinListURL)
     .responseJSON { (responseData) in
         switch responseData.result {
         case .success(let succesedResult):
             do {
+                print("석세스드리절트: \(succesedResult)")
                 let coinListData = try JSONSerialization.data(withJSONObject: succesedResult, options: .prettyPrinted)
-                print("코인리스트 데이터 --> \(coinListData)")
+//                print("코인리스트 데이터 --> \(coinListData)")
             } catch {
                 
             }
