@@ -83,14 +83,32 @@ struct CoinListResponse: Codable {
         case raw = "RAW"
     }
 }
-
+//"https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG&tsyms=USD")!
 struct RawData: Codable {
     let btc: Coin
     let eth: Coin
+    let dash: Coin
+//    let ltc: Coin
+//    let etc: Coin
+//    let xrp: Coin
+//    let bch: Coin
+//    let xmr: Coin
+//    let qtum: Coin
+//    let zec: Coin
+//    let btg: Coin
     
     enum CodingKeys: String, CodingKey {
         case btc = "BTC"
         case eth = "ETH"
+        case dash = "DASH"
+//        case ltc = "LTC"
+//        case etc = "ETC"
+//        case xrp = "XRP"
+//        case bch = "BCH"
+//        case xmr = "XMR"
+//        case qtum = "QTUM"
+//        case zec = "ZEC"
+//        case btg = "BTG"
     }
 }
 
@@ -139,8 +157,10 @@ AF.request(coinListURL)
 //                print("코인리스트 데이터 --> \(coinListData)")
                 let string = String(data: coinListData, encoding: .utf8)
 //                print("스트링: \(string)")
+                let json = JSON(string)
+                print("제이슨: \(json)")
                 let response = try decoder.decode(CoinListResponse.self, from: coinListData)
-                print("코인리스트 리스폰스 --> :\(response.raw)")
+//                print("코인리스트 리스폰스 --> :\(response)")
             } catch {
                 
             }
