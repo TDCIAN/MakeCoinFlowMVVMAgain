@@ -35,8 +35,6 @@ struct Article: Codable {
     }
 }
 
-let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
-
 //let taskWithNewsURL = urlSession.dataTask(with: newsURL) { (data, response, error) in
 //    let successRange = 200..<300
 //    guard error == nil,
@@ -56,23 +54,40 @@ let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
 //    }
 //}
 //taskWithNewsURL.resume()
-AF.request(newsURL)
+//let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
+//AF.request(newsURL)
+//    .responseJSON { (responseData) in
+//        switch responseData.result {
+//        case .success(let successedResult):
+////            print("결과물: \(successedResult)")
+//            let json = JSON(successedResult)
+//            let decoder = JSONDecoder()
+//            do {
+//                let data = try JSONSerialization.data(withJSONObject: successedResult, options: .prettyPrinted)
+////                let data = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+//                let response = try decoder.decode([NewsResponse].self, from: data)
+//
+//                print("뉴스 리스폰스: \(response)")
+//            } catch {
+//
+//            }
+//        case .failure(let error):
+//            print("뉴스 에러 --> :\(error.localizedDescription)")
+//        }
+//}
+
+let coinListURL = URL(string: "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG&tsyms=USD")!
+AF.request(coinListURL)
     .responseJSON { (responseData) in
         switch responseData.result {
-        case .success(let successedResult):
-//            print("결과물: \(successedResult)")
-            let json = JSON(successedResult)
-            let decoder = JSONDecoder()
+        case .success(let succesedResult):
             do {
-                let data = try JSONSerialization.data(withJSONObject: successedResult, options: .prettyPrinted)
-//                let data = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
-                let response = try decoder.decode([NewsResponse].self, from: data)
-                
-                print("리스폰스: \(response)")
+                let coinListData = try JSONSerialization.data(withJSONObject: succesedResult, options: .prettyPrinted)
+                print("코인리스트 데이터 --> \(coinListData)")
             } catch {
                 
             }
         case .failure(let error):
-            print("실패임: \(error.localizedDescription)")
+            print("코인리스트 에러 --> :\(error.localizedDescription)")
         }
 }
