@@ -130,10 +130,15 @@ AF.request(coinListURL)
     .responseJSON { (responseData) in
         switch responseData.result {
         case .success(let succesedResult):
+            let decoder = JSONDecoder()
             do {
-                print("석세스드리절트: \(succesedResult)")
+//                print("석세스드리절트: \(succesedResult)")
                 let coinListData = try JSONSerialization.data(withJSONObject: succesedResult, options: .prettyPrinted)
 //                print("코인리스트 데이터 --> \(coinListData)")
+                let string = String(data: coinListData, encoding: .utf8)
+//                print("스트링: \(string)")
+                let response = try decoder.decode(CoinListResponse.self, from: coinListData)
+                print("코인리스트 리스폰스 --> :\(response)")
             } catch {
                 
             }
