@@ -61,9 +61,11 @@ AF.request(newsURL)
         switch responseData.result {
         case .success(let successedResult):
 //            print("결과물: \(successedResult)")
+            let json = JSON(successedResult)
             let decoder = JSONDecoder()
             do {
                 let data = try JSONSerialization.data(withJSONObject: successedResult, options: .prettyPrinted)
+//                let data = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
                 let response = try decoder.decode([NewsResponse].self, from: data)
                 
                 print("리스폰스: \(response)")
