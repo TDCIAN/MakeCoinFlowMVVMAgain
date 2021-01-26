@@ -169,15 +169,36 @@ let coinListURL = URL(string: "https://min-api.cryptocompare.com/data/pricemulti
 //        }
 //}
 
+struct ChartDataResponse: Codable {
+    let chartDatas: [ChartData]
+    
+    enum CodingKeys: String, CodingKey {
+        case chartDatas = "Data"
+    }
+}
+
+struct ChartData: Codable {
+    let time: TimeInterval
+    let closePrice: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case time = "time"
+        case closePrice = "close"
+    }
+}
+
 let coinChartURL = URL(string: "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=24")!
 AF.request(coinChartURL)
     .responseJSON { (responseData) in
         switch responseData.result {
         case .success(let successedResult):
 //            print("석세스드리절트: \(successedResult)")
+            let decoder = JSONDecoder()
             do {
                 let resultData = try JSONSerialization.data(withJSONObject: successedResult, options: .prettyPrinted)
-                print("리절트데이터: \(resultData)")
+//                print("리절트데이터: \(resultData)")
+                let response = try decoder.decode(ChartDataResponse.self, from: resultData)
+                print("리스폰스: \(response)")
             } catch {
                 
             }
