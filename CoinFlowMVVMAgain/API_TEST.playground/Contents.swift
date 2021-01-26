@@ -76,39 +76,55 @@ struct Article: Codable {
 //        }
 //}
 
+//"https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG&tsyms=USD")!
+enum CoinType: String, CaseIterable {
+    case BTC
+    case ETH
+    case DASH
+    case LTC
+    case ETC
+    case XRP
+    case BCH
+    case XMR
+    case QTUM
+    case ZEC
+    case BTG
+}
+
 struct CoinListResponse: Codable {
-    let raw: RawData
-    
+    let raw: RAWData
     enum CodingKeys: String, CodingKey {
         case raw = "RAW"
     }
 }
-//"https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG&tsyms=USD")!
-struct RawData: Codable {
-//    let btc: Coin
-//    let eth: Coin
-//    let dash: Coin
+
+struct RAWData: Codable {
+    let btc: Coin
+    let eth: Coin
+    // ---
+    let dash: Coin
     let ltc: Coin
     let etc: Coin
     let xrp: Coin
-//    let bch: Coin
-//    let xmr: Coin
-//    let qtum: Coin
-//    let zec: Coin
-//    let btg: Coin
+    let bch: Coin
+    let xmr: Coin
+    let qtum: Coin
+    let zec: Coin
+    let btg: Coin
     
     enum CodingKeys: String, CodingKey {
-//        case btc = "BTC"
-//        case eth = "ETH"
-//        case dash = "DASH"
+        case btc = "BTC"
+        case eth = "ETH"
+        // ---
+        case dash = "DASH"
         case ltc = "LTC"
         case etc = "ETC"
         case xrp = "XRP"
-//        case bch = "BCH"
-//        case xmr = "XMR"
-//        case qtum = "QTUM"
-//        case zec = "ZEC"
-//        case btg = "BTG"
+        case bch = "BCH"
+        case xmr = "XMR"
+        case qtum = "QTUM"
+        case zec = "ZEC"
+        case btg = "BTG"
     }
 }
 
@@ -133,18 +149,6 @@ struct CurrencyInfo: Codable {
         case market = "LASTMARKET"
     }
 }
-
-//"LASTMARKET": "Coinbase",
-//"VOLUMEHOUR": 426.5735325400038,
-//"VOLUMEHOURTO": 14310564.979030505,
-//"OPENHOUR": 32802.28,
-//"HIGHHOUR": 32897.76,
-//"LOWHOUR": 32641.85,
-//"TOPTIERVOLUME24HOUR": 35854.907198400004,
-//"TOPTIERVOLUME24HOURTO": 1154980952.6058037,
-//"CHANGE24HOUR": 166.63000000000102,
-//"CHANGEPCT24HOUR": 0.5127485544232633,
-
 let coinListURL = URL(string: "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG&tsyms=USD")!
 AF.request(coinListURL)
     .responseJSON { (responseData) in
@@ -156,7 +160,7 @@ AF.request(coinListURL)
                 let coinListData = try JSONSerialization.data(withJSONObject: succesedResult, options: .prettyPrinted)
 //                print("코인리스트 데이터 --> \(coinListData)")
 //                let string = String(data: coinListData, encoding: .utf8)
-//                print("스트링: \(string)")
+////                print("스트링: \(string)")
 //                let json = JSON(string)
 //                print("제이슨: \(json)")
                 let response = try decoder.decode(CoinListResponse.self, from: coinListData)
