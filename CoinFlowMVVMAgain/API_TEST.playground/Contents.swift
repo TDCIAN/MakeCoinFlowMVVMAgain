@@ -85,12 +85,12 @@ struct CoinListResponse: Codable {
 }
 //"https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG&tsyms=USD")!
 struct RawData: Codable {
-    let btc: Coin
-    let eth: Coin
-    let dash: Coin
-//    let ltc: Coin
-//    let etc: Coin
-//    let xrp: Coin
+//    let btc: Coin
+//    let eth: Coin
+//    let dash: Coin
+    let ltc: Coin
+    let etc: Coin
+    let xrp: Coin
 //    let bch: Coin
 //    let xmr: Coin
 //    let qtum: Coin
@@ -98,12 +98,12 @@ struct RawData: Codable {
 //    let btg: Coin
     
     enum CodingKeys: String, CodingKey {
-        case btc = "BTC"
-        case eth = "ETH"
-        case dash = "DASH"
-//        case ltc = "LTC"
-//        case etc = "ETC"
-//        case xrp = "XRP"
+//        case btc = "BTC"
+//        case eth = "ETH"
+//        case dash = "DASH"
+        case ltc = "LTC"
+        case etc = "ETC"
+        case xrp = "XRP"
 //        case bch = "BCH"
 //        case xmr = "XMR"
 //        case qtum = "QTUM"
@@ -146,63 +146,63 @@ struct CurrencyInfo: Codable {
 //"CHANGEPCT24HOUR": 0.5127485544232633,
 
 let coinListURL = URL(string: "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG&tsyms=USD")!
-//AF.request(coinListURL)
-//    .responseJSON { (responseData) in
-//        switch responseData.result {
-//        case .success(let succesedResult):
-//            let decoder = JSONDecoder()
-//            do {
-////                print("석세스드리절트: \(succesedResult)")
-//                let coinListData = try JSONSerialization.data(withJSONObject: succesedResult, options: .prettyPrinted)
-////                print("코인리스트 데이터 --> \(coinListData)")
+AF.request(coinListURL)
+    .responseJSON { (responseData) in
+        switch responseData.result {
+        case .success(let succesedResult):
+            let decoder = JSONDecoder()
+            do {
+//                print("석세스드리절트: \(succesedResult)")
+                let coinListData = try JSONSerialization.data(withJSONObject: succesedResult, options: .prettyPrinted)
+//                print("코인리스트 데이터 --> \(coinListData)")
 //                let string = String(data: coinListData, encoding: .utf8)
-////                print("스트링: \(string)")
+//                print("스트링: \(string)")
 //                let json = JSON(string)
 //                print("제이슨: \(json)")
-//                let response = try decoder.decode(CoinListResponse.self, from: coinListData)
-////                print("코인리스트 리스폰스 --> :\(response)")
+                let response = try decoder.decode(CoinListResponse.self, from: coinListData)
+                print("코인리스트 리스폰스 --> :\(response.raw)")
+            } catch {
+                print("에러: \(error.localizedDescription)")
+            }
+        case .failure(let error):
+            print("코인리스트 에러 --> :\(error.localizedDescription)")
+        }
+}
+
+//struct ChartDataResponse: Codable {
+//    let chartDatas: [ChartData]
+//
+//    enum CodingKeys: String, CodingKey {
+//        case chartDatas = "Data"
+//    }
+//}
+//
+//struct ChartData: Codable {
+//    let time: TimeInterval
+//    let closePrice: Double
+//
+//    enum CodingKeys: String, CodingKey {
+//        case time
+//        case closePrice = "close"
+//    }
+//}
+//
+//let coinChartURL = URL(string: "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=24")!
+//AF.request(coinChartURL)
+//    .responseJSON { (responseData) in
+//        switch responseData.result {
+//        case .success(let successedResult):
+////            print("석세스드리절트: \(successedResult)")
+//            let decoder = JSONDecoder()
+//            do {
+//                let resultData = try JSONSerialization.data(withJSONObject: successedResult, options: .prettyPrinted)
+////                print("리절트데이터: \(resultData)")
+//                let response = try decoder.decode(ChartDataResponse.self, from: resultData)
+//                print("리스폰스: \(response)")
 //            } catch {
 //
 //            }
 //        case .failure(let error):
-//            print("코인리스트 에러 --> :\(error.localizedDescription)")
+//            print("코인차트 에러 --> :\(error.localizedDescription)")
 //        }
 //}
-
-struct ChartDataResponse: Codable {
-    let chartDatas: [ChartData]
-    
-    enum CodingKeys: String, CodingKey {
-        case chartDatas = "Data"
-    }
-}
-
-struct ChartData: Codable {
-    let time: TimeInterval
-    let closePrice: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case time = "time"
-        case closePrice = "close"
-    }
-}
-
-let coinChartURL = URL(string: "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=24")!
-AF.request(coinChartURL)
-    .responseJSON { (responseData) in
-        switch responseData.result {
-        case .success(let successedResult):
-//            print("석세스드리절트: \(successedResult)")
-            let decoder = JSONDecoder()
-            do {
-                let resultData = try JSONSerialization.data(withJSONObject: successedResult, options: .prettyPrinted)
-//                print("리절트데이터: \(resultData)")
-                let response = try decoder.decode(ChartDataResponse.self, from: resultData)
-                print("리스폰스: \(response)")
-            } catch {
-                
-            }
-        case .failure(let error):
-            print("코인차트 에러 --> :\(error.localizedDescription)")
-        }
-}
