@@ -174,7 +174,13 @@ AF.request(coinChartURL)
     .responseJSON { (responseData) in
         switch responseData.result {
         case .success(let successedResult):
-            print("석세스드리절트: \(successedResult)")
+//            print("석세스드리절트: \(successedResult)")
+            do {
+                let resultData = try JSONSerialization.data(withJSONObject: successedResult, options: .prettyPrinted)
+                print("리절트데이터: \(resultData)")
+            } catch {
+                
+            }
         case .failure(let error):
             print("코인차트 에러 --> :\(error.localizedDescription)")
         }
