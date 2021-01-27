@@ -163,6 +163,14 @@
                                                         <constraint firstItem="nxs-sA-yLM" firstAttribute="top" secondItem="1LX-ff-oeT" secondAttribute="bottom" constant="5" id="vzN-Zq-nTB"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="change24Hours" destination="Kha-ZN-5Fb" id="YiV-9d-nWw"/>
+                                                    <outlet property="changePercent" destination="ccP-gX-X5I" id="vQi-18-M8T"/>
+                                                    <outlet property="coinName" destination="vBq-fO-fjM" id="8L5-Xk-lNg"/>
+                                                    <outlet property="currentPrice" destination="fQT-wd-DXe" id="PV2-fq-6QG"/>
+                                                    <outlet property="currentStatusBox" destination="nxs-sA-yLM" id="b4T-L6-7I0"/>
+                                                    <outlet property="currentStatusImageView" destination="riQ-RT-jce" id="Bur-8f-W1T"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>

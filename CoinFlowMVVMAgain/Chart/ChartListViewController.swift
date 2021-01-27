@@ -21,6 +21,7 @@ class ChartListViewController: UIViewController {
             // data 세팅이 되면 테이블뷰 리스트 다시 그리기, 테이블뷰 리로드
             DispatchQueue.main.async {
                 self.chartTableView.reloadData()
+                self.adjustTableViewHeight()
             }
         }
     }
@@ -54,7 +55,7 @@ class ChartListViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // 이 시점에 테이블뷰 컨텐츠사이즈 파악 후, 테이블뷰 높이를 조정하겠다
-        adjustTableViewHeight()
+        
         
     }
 }
@@ -75,16 +76,13 @@ extension ChartListViewController {
 // MARK: - Collection View
 extension ChartListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return coinInfoList.count
+        return 15
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChartCardCell", for: indexPath) as? ChartCardCell else { return UICollectionViewCell() }
-        
-        let coinInfo = coinInfoList[indexPath.row]
-        cell.configCell(coinInfo: coinInfo)
-        
+        cell.backgroundColor = .randomColor()
         return cell
     }
 }
@@ -99,21 +97,20 @@ extension ChartListViewController: UICollectionViewDelegateFlowLayout {
 }
 
 class ChartCardCell: UICollectionViewCell {
-    func configCell(coinInfo: CoinInfo) {
-        
-    }
+
 }
 
 // MARK: - Table View
 extension ChartListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return coinInfoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChartListCell", for: indexPath) as? ChartListCell else { return UITableViewCell()
         }
-        cell.backgroundColor = .randomColor()
+        let coinInfo = coinInfoList[indexPath.row]
+        cell.configCell(coinInfo: coinInfo)
         return cell
     }
     
@@ -121,5 +118,34 @@ extension ChartListViewController: UITableViewDataSource {
 }
 
 class ChartListCell: UITableViewCell {
-    
+    @IBOutlet weak var currentStatusBox: UIView!
+    @IBOutlet weak var coinName: UILabel!
+    @IBOutlet weak var currentPrice: UILabel!
+    @IBOutlet weak var change24Hours: UILabel!
+    @IBOutlet weak var changePercent: UILabel!
+    @IBOutlet weak var currentStatusImageView: UIImageView!
+        
+    func configCell(coinInfo: CoinInfo) {
+        let coinType = coinInfo.key
+        let coin = coinInfo.value
+        
+        let isUnderPerform = coin.usd.changeLast24H < 0
+        let upColor = UIColor.systemPink
+        let downColor = UIColor.systemBlue
+        let color = isUnderPerform ? downColor : upColor
+        currentStatusBox.backgroundColor = color
+        coinName.text = coinType.rawValue
+        currentPrice.text = String(format: "%.1f", coin.usd.price)
+        
+        change24Hours.text = String(format: "%.1f", coin.usd.changePercentLast24H)
+        
+        changePercent.text = String(format: "%.1f %%", coin.usd.changePercentLast24H)
+        
+        change24Hours.textColor = color
+        changePercent.textColor = color
+        
+        let statusImage = isUnderPerform ? UIImage(systemName: "arrowtriangle.down.fill") : UIImage(systemName: "arrowtriangle.up.fill")
+        currentStatusImageView.image = statusImage
+        currentStatusImageView.tintColor = color
+    }
 }
