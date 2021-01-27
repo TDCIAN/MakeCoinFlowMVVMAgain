@@ -24,6 +24,9 @@
 		187C19BC25B640B100FD8770 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19BB25B640B100FD8770 /* NewsViewController.swift */; };
 		187C19BF25B640BA00FD8770 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19BE25B640BA00FD8770 /* SettingViewController.swift */; };
 		187C19C525B6412900FD8770 /* ChartDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19C425B6412900FD8770 /* ChartDetailViewController.swift */; };
+		187DF00E25C100F90046F437 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DF00D25C100F90046F437 /* EndPoint.swift */; };
+		187DF01225C101080046F437 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DF01125C101080046F437 /* Request.swift */; };
+		187DF01525C104D80046F437 /* CoinListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DF01425C104D80046F437 /* CoinListRequest.swift */; };
 		8FD081D59C1FCF8EB73DDF88 /* Pods_CoinFlowMVVMAgain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2066E1A9B19D50FBCFA13B48 /* Pods_CoinFlowMVVMAgain.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +51,9 @@
 		187C19BB25B640B100FD8770 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		187C19BE25B640BA00FD8770 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		187C19C425B6412900FD8770 /* ChartDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDetailViewController.swift; sourceTree = "<group>"; };
+		187DF00D25C100F90046F437 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		187DF01125C101080046F437 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		187DF01425C104D80046F437 /* CoinListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListRequest.swift; sourceTree = "<group>"; };
 		2066E1A9B19D50FBCFA13B48 /* Pods_CoinFlowMVVMAgain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinFlowMVVMAgain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2405FB80249FDBA3395F11FB /* Pods-CoinFlowMVVMAgain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinFlowMVVMAgain.debug.xcconfig"; path = "Target Support Files/Pods-CoinFlowMVVMAgain/Pods-CoinFlowMVVMAgain.debug.xcconfig"; sourceTree = "<group>"; };
 		934FA976911E7A4A843AE699 /* Pods-CoinFlowMVVMAgain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinFlowMVVMAgain.release.xcconfig"; path = "Target Support Files/Pods-CoinFlowMVVMAgain/Pods-CoinFlowMVVMAgain.release.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				1815B76D25C05BA100FE9235 /* NetworkManager.swift */,
+				187DF00D25C100F90046F437 /* EndPoint.swift */,
+				187DF01125C101080046F437 /* Request.swift */,
+				187DF01425C104D80046F437 /* CoinListRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -292,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				187C19C525B6412900FD8770 /* ChartDetailViewController.swift in Sources */,
+				187DF01225C101080046F437 /* Request.swift in Sources */,
 				1844DA8925B79982001D3467 /* UIColor.swift in Sources */,
 				187C19B925B640A700FD8770 /* ChartListViewController.swift in Sources */,
 				187C19A425B63BFD00FD8770 /* AppDelegate.swift in Sources */,
@@ -301,6 +311,8 @@
 				1815B76225C0596400FE9235 /* CoinData.swift in Sources */,
 				187C19BC25B640B100FD8770 /* NewsViewController.swift in Sources */,
 				187C19A625B63BFD00FD8770 /* SceneDelegate.swift in Sources */,
+				187DF00E25C100F90046F437 /* EndPoint.swift in Sources */,
+				187DF01525C104D80046F437 /* CoinListRequest.swift in Sources */,
 				187C19BF25B640BA00FD8770 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
