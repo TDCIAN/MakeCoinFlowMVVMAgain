@@ -40,15 +40,6 @@ class ChartListViewController: UIViewController {
                 print("--> coin list error: \(error.localizedDescription)")
             }
         }
-        
-        NetworkManager.requestCoinChartData { result in
-            switch result {
-            case .success(let coinChartDatas):
-                print("--> coin chart data: \(coinChartDatas.count)")
-            case .failure(let error):
-                print("--> coin chart error: \(error.localizedDescription)")
-            }
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,8 +104,12 @@ extension ChartListViewController: UITableViewDataSource {
         cell.configCell(coinInfo: coinInfo)
         return cell
     }
-    
-    
+}
+
+extension ChartListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showDetail()
+    }
 }
 
 class ChartListCell: UITableViewCell {
