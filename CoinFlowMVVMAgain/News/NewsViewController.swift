@@ -12,7 +12,14 @@ class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        NetworkManager.requestNewsList { result in
+            switch result {
+            case .success(let articles):
+                print("--> article list: \(articles.count)")
+            case .failure(let error):
+                print("--> article error: \(error.localizedDescription)")
+            }
+        }
     }
 }
 

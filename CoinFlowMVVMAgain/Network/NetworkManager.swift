@@ -11,39 +11,110 @@ import Alamofire
 class NetworkManager {
     
     static let session = URLSession.shared
+//
+//    static func requestCoinList(completion: @escaping ([Coin]) -> Void) {
+//        let coinListURL = URL(string: "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG&tsyms=USD")!
+//        let taskWithCoinListURL = session.dataTask(with: coinListURL) { (data, response, error) in
+//            let successRange = 200..<300
+//            guard error == nil,
+//                  let statusCode = (response as? HTTPURLResponse)?.statusCode,
+//                  successRange.contains(statusCode) else {
+//                return
+//            }
+//
+//            guard let responseData = data else{ return }
+//            let decoder = JSONDecoder()
+//            do {
+//                let response = try decoder.decode(CoinListResponse.self, from: responseData)
+//                print("--> success: \(response.raw.btg)")
+//                let coinList = response.raw.allCoins()
+//                completion(coinList)
+//            } catch {
+//                print("--> coin list error: \(error.localizedDescription)")
+//            }
+//
+//        }
+//        taskWithCoinListURL.resume()
+//    }
+//
+//    static func requestCoinChartData(completion: @escaping ([ChartData]) -> Void) {
+//        let coinChartDataURL = URL(string: "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=24")!
+//        let taskWithCoinChartDataURL = session.dataTask(with: coinChartDataURL) { (data, response, error) in
+//            let successRange = 200..<300
+//            guard error == nil,
+//                  let statusCode = (response as? HTTPURLResponse)?.statusCode,
+//                  successRange.contains(statusCode) else {
+//                return
+//            }
+//            guard let responseData = data else { return }
+//            let decoder = JSONDecoder()
+//            do {
+//                let response = try decoder.decode(ChartDataResponse.self, from: responseData)
+//                let chartDatas = response.chartDatas
+//                completion(chartDatas)
+//            } catch {
+//                print("--> coin chart error: \(error.localizedDescription)")
+//            }
+//        }
+//        taskWithCoinChartDataURL.resume()
+//    }
+//
+//    static func requestNewsList(completion: @escaping ([Article]) -> Void) {
+//        let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
+//        let taskWithNewsURL = session.dataTask(with: newsURL) { (data, response, error) in
+//            let successRange = 200..<300
+//            guard error == nil,
+//                  let statusCode = (response as? HTTPURLResponse)?.statusCode,
+//                  successRange.contains(statusCode) else {
+//                return
+//            }
+//            guard let responseData = data else { return }
+//            let decoder = JSONDecoder()
+//            do {
+//                let response = try decoder.decode([NewsResponse].self, from: responseData)
+//                let articles = response.flatMap { $0.articleArray }
+//                completion(articles)
+//            } catch {
+//                print("--> news list error: \(error.localizedDescription)")
+//            }
+//        }
+//        taskWithNewsURL.resume()
+//    }
     
-    static func requestCoinList(completion: @escaping ([Coin]) -> Void) {
-        let coinListURL = URL(string: "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG&tsyms=USD")!
+}
+
+extension NetworkManager {
+    static func requestCoinList(completion: @escaping (Result<[Coin], Error>) -> Void) {
+        let param:RequestParam = .url(["fsyms":"BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG","tsyms":"USD"])
+        guard let coinListURL = CoinListRequest(param: param).urlRequest()?.url else { return }
+//        let coinListURL = URL(string: "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,DASH,LTC,ETC,XRP,BCH,XMR,QTUM,ZEC,BTG&tsyms=USD")!
         let taskWithCoinListURL = session.dataTask(with: coinListURL) { (data, response, error) in
-            let successRange = 200..<300
-            guard error == nil,
-                  let statusCode = (response as? HTTPURLResponse)?.statusCode,
-                  successRange.contains(statusCode) else {
+            if let error = error {
+                completion(.failure(error))
                 return
             }
-            
             guard let responseData = data else{ return }
             let decoder = JSONDecoder()
             do {
                 let response = try decoder.decode(CoinListResponse.self, from: responseData)
                 print("--> success: \(response.raw.btg)")
                 let coinList = response.raw.allCoins()
-                completion(coinList)
-            } catch {
+                completion(.success(coinList))
+            } catch let error {
                 print("--> coin list error: \(error.localizedDescription)")
+                completion(.failure(error))
             }
-            
         }
         taskWithCoinListURL.resume()
     }
     
-    static func requestCoinChartData(completion: @escaping ([ChartData]) -> Void) {
-        let coinChartDataURL = URL(string: "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=24")!
+    static func requestCoinChartData(completion: @escaping (Result<[ChartData], Error>) -> Void) {
+        let param:RequestParam = .url(["fsym":"BTC", "tsym":"USD", "limit":"24"])
+        guard let coinChartDataURL = CoinChartDataRequest(period: .day, param: param).urlRequest()?.url else { return }
+//        let coinChartDataURL = URL(string: "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=24")!
         let taskWithCoinChartDataURL = session.dataTask(with: coinChartDataURL) { (data, response, error) in
-            let successRange = 200..<300
-            guard error == nil,
-                  let statusCode = (response as? HTTPURLResponse)?.statusCode,
-                  successRange.contains(statusCode) else {
+            if let error = error {
+                completion(.failure(error))
                 return
             }
             guard let responseData = data else { return }
@@ -51,21 +122,21 @@ class NetworkManager {
             do {
                 let response = try decoder.decode(ChartDataResponse.self, from: responseData)
                 let chartDatas = response.chartDatas
-                completion(chartDatas)
-            } catch {
+                completion(.success(chartDatas))
+            } catch let error {
                 print("--> coin chart error: \(error.localizedDescription)")
+                completion(.failure(error))
             }
         }
         taskWithCoinChartDataURL.resume()
     }
     
-    static func requestNewsList(completion: @escaping ([Article]) -> Void) {
-        let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
+    static func requestNewsList(completion: @escaping (Result<[Article], Error>) -> Void) {
+//        let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
+        guard let newsURL = NewsListRequest().urlRequest()?.url else{ return }
         let taskWithNewsURL = session.dataTask(with: newsURL) { (data, response, error) in
-            let successRange = 200..<300
-            guard error == nil,
-                  let statusCode = (response as? HTTPURLResponse)?.statusCode,
-                  successRange.contains(statusCode) else {
+            if let error = error {
+                completion(.failure(error))
                 return
             }
             guard let responseData = data else { return }
@@ -73,12 +144,12 @@ class NetworkManager {
             do {
                 let response = try decoder.decode([NewsResponse].self, from: responseData)
                 let articles = response.flatMap { $0.articleArray }
-                completion(articles)
-            } catch {
+                completion(.success(articles))
+            } catch let error {
                 print("--> news list error: \(error.localizedDescription)")
+                completion(.failure(error))
             }
         }
         taskWithNewsURL.resume()
     }
-    
 }

@@ -19,6 +19,11 @@ enum HTTPMethod: String {
     }
 }
 
+enum NetworkError: Error {
+    case invalidURL
+    case notFound
+}
+
 enum RequestParam {
     case url([String: String])
     case body([String: String])
@@ -38,7 +43,7 @@ extension Request {
     var headers: [String]? { return ["Content-Type", "Accept"] }
     
     // Request의 목표 -> URL을 만드는 것
-    func urlRequest() -> URLRequest {
+    func urlRequest() -> URLRequest? {
         let url = URL(string: path)!
         var request = URLRequest(url: url)
         
