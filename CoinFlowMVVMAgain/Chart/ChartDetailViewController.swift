@@ -10,10 +10,25 @@ import UIKit
 class ChartDetailViewController: UIViewController {
     
     var coinInfo: CoinInfo!
+    @IBOutlet weak var coinTypeLabel: UILabel!
     
+    @IBOutlet weak var currentPriceLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateCoinInfo(coinInfo: coinInfo)
+        fetchData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("--> 꽂힌 정보는: \(coinInfo.key)")
+    }
+}
 
+extension ChartDetailViewController {
+    
+    private func fetchData() {
         NetworkManager.requestCoinChartData { result in
             switch result {
             case .success(let coinChartDatas):
@@ -24,9 +39,8 @@ class ChartDetailViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        print("--> 꽂힌 정보는: \(coinInfo.key)")
+    private func updateCoinInfo(coinInfo: CoinInfo) {
+        coinTypeLabel.text = "\(coinInfo.key)"
+        currentPriceLabel.text = String(format: "%.1f", coinInfo.value.usd.price)
     }
 }
