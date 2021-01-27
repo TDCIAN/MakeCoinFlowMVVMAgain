@@ -8,7 +8,9 @@
 import UIKit
 
 class ChartDetailViewController: UIViewController {
-
+    
+    var coinInfo: CoinInfo!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,5 +23,10 @@ class ChartDetailViewController: UIViewController {
             }
         }
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("--> 꽂힌 정보는: \(coinInfo.key)")
+    }
 }

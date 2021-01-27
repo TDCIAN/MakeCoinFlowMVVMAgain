@@ -57,10 +57,12 @@ extension ChartListViewController {
         chartTableViewHeight.constant = chartTableView.contentSize.height
     }
     
-    private func showDetail() {
+    private func showDetail(coinInfo: CoinInfo) {
         let storyboard = UIStoryboard(name: "Chart", bundle: .main)
-        let chartDetailViewController = storyboard.instantiateViewController(withIdentifier: "ChartDetailViewController")
-        navigationController?.pushViewController(chartDetailViewController, animated: true)
+        if let detailVC = storyboard.instantiateViewController(withIdentifier: "ChartDetailViewController") as? ChartDetailViewController {
+            detailVC.coinInfo = coinInfo
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }
 
@@ -108,39 +110,7 @@ extension ChartListViewController: UITableViewDataSource {
 
 extension ChartListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showDetail()
-    }
-}
-
-class ChartListCell: UITableViewCell {
-    @IBOutlet weak var currentStatusBox: UIView!
-    @IBOutlet weak var coinName: UILabel!
-    @IBOutlet weak var currentPrice: UILabel!
-    @IBOutlet weak var change24Hours: UILabel!
-    @IBOutlet weak var changePercent: UILabel!
-    @IBOutlet weak var currentStatusImageView: UIImageView!
-        
-    func configCell(coinInfo: CoinInfo) {
-        let coinType = coinInfo.key
-        let coin = coinInfo.value
-        
-        let isUnderPerform = coin.usd.changeLast24H < 0
-        let upColor = UIColor.systemPink
-        let downColor = UIColor.systemBlue
-        let color = isUnderPerform ? downColor : upColor
-        currentStatusBox.backgroundColor = color
-        coinName.text = coinType.rawValue
-        currentPrice.text = String(format: "%.1f", coin.usd.price)
-        
-        change24Hours.text = String(format: "%.1f", coin.usd.changePercentLast24H)
-        
-        changePercent.text = String(format: "%.1f %%", coin.usd.changePercentLast24H)
-        
-        change24Hours.textColor = color
-        changePercent.textColor = color
-        
-        let statusImage = isUnderPerform ? UIImage(systemName: "arrowtriangle.down.fill") : UIImage(systemName: "arrowtriangle.up.fill")
-        currentStatusImageView.image = statusImage
-        currentStatusImageView.tintColor = color
+        let coinInfo = coinInfoList[indexPath.row]
+        showDetail(coinInfo: coinInfo)
     }
 }
