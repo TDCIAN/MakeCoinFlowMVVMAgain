@@ -30,7 +30,7 @@ class NetworkManager {
                 let coinList = response.raw.allCoins()
                 completion(coinList)
             } catch {
-                print("--> error: \(error.localizedDescription)")
+                print("--> coin list error: \(error.localizedDescription)")
             }
             
         }
@@ -53,12 +53,32 @@ class NetworkManager {
                 let chartDatas = response.chartDatas
                 completion(chartDatas)
             } catch {
-                print("--> err: \(error.localizedDescription)")
+                print("--> coin chart error: \(error.localizedDescription)")
             }
         }
         taskWithCoinChartDataURL.resume()
     }
     
-    
+    static func requestNewsList(completion: @escaping ([Article]) -> Void) {
+        let newsURL = URL(string: "http://coinbelly.com/api/get_rss")!
+        let taskWithNewsURL = session.dataTask(with: newsURL) { (data, response, error) in
+            let successRange = 200..<300
+            guard error == nil,
+                  let statusCode = (response as? HTTPURLResponse)?.statusCode,
+                  successRange.contains(statusCode) else {
+                return
+            }
+            guard let responseData = data else { return }
+            let decoder = JSONDecoder()
+            do {
+                let response = try decoder.decode([NewsResponse].self, from: responseData)
+                let articles = response.flatMap { $0.articleArray }
+                completion(articles)
+            } catch {
+                print("--> news list error: \(error.localizedDescription)")
+            }
+        }
+        taskWithNewsURL.resume()
+    }
     
 }
