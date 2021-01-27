@@ -7,11 +7,23 @@
 
 import UIKit
 
+typealias CoinInfo = (key: CoinType, value: Coin)
+
 class ChartListViewController: UIViewController {
 
     @IBOutlet weak var chartCollectionView: UICollectionView!
     @IBOutlet weak var chartTableView: UITableView!
     @IBOutlet weak var chartTableViewHeight: NSLayoutConstraint!
+    
+    var coinInfoList: [CoinInfo] = [] {
+        // data가 세팅이 되면 didSet
+        didSet {
+            // data 세팅이 되면 테이블뷰 리스트 다시 그리기, 테이블뷰 리로드
+            DispatchQueue.main.async {
+                self.chartTableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +31,8 @@ class ChartListViewController: UIViewController {
             switch result {
             case .success(let coins):
                 // cell에는 coin type과 해당 coin의 정보가 들어가야 한다
-                let tuple = zip(CoinType.allCases, coins).map { (key: $0, value: $1) }
+                let tuples = zip(CoinType.allCases, coins).map { (key: $0, value: $1) }
+                self.coinInfoList = tuples
                 
                 print("--> coin list: \(coins.count), \(coins)")
             case .failure(let error):
@@ -62,13 +75,16 @@ extension ChartListViewController {
 // MARK: - Collection View
 extension ChartListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return coinInfoList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChartCardCell", for: indexPath) as? ChartCardCell else { return UICollectionViewCell() }
-        cell.backgroundColor = UIColor.randomColor()
+        
+        let coinInfo = coinInfoList[indexPath.row]
+        cell.configCell(coinInfo: coinInfo)
+        
         return cell
     }
 }
@@ -83,7 +99,9 @@ extension ChartListViewController: UICollectionViewDelegateFlowLayout {
 }
 
 class ChartCardCell: UICollectionViewCell {
-    
+    func configCell(coinInfo: CoinInfo) {
+        
+    }
 }
 
 // MARK: - Table View
