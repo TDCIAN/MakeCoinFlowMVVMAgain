@@ -26,11 +26,11 @@ enum Period: String, CaseIterable {
         switch self {
         case .day: // hour
             return 24
-        case .week: // hour 24 * 7 (> 24 * 7 / (aggregate factor))
+        case .week: // hour 24 * 7 (> 24 * 7 / (aggregate factor)) -> 1주일치인데 모아서 갖고 오느라 2로 나눈다
             return 7 * 24 / 2
         case .month:
             return 30 / 1
-        case .year: // day / aggregate factor
+        case .year: // day / aggregate factor -> 1년치인데 모아서 갖고 오느라 10으로 나눈다
             return 365 / 10
         }
     }
