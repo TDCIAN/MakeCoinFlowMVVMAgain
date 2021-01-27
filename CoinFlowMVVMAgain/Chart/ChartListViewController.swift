@@ -18,7 +18,10 @@ class ChartListViewController: UIViewController {
         NetworkManager.requestCoinList { result in
             switch result {
             case .success(let coins):
-                print("--> coin list: \(coins.count)")
+                // cell에는 coin type과 해당 coin의 정보가 들어가야 한다
+                let tuple = zip(CoinType.allCases, coins).map { (key: $0, value: $1) }
+                
+                print("--> coin list: \(coins.count), \(coins)")
             case .failure(let error):
                 print("--> coin list error: \(error.localizedDescription)")
             }
