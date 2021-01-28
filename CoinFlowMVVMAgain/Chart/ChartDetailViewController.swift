@@ -7,9 +7,14 @@
 
 import UIKit
 
+typealias CoinChartInfo = (key: Period, value: [ChartData])
 class ChartDetailViewController: UIViewController {
     
     var coinInfo: CoinInfo!
+    
+    var chartDatas: [CoinChartInfo] = []
+    var selectedPeriod: Period = .day
+    
     @IBOutlet weak var coinTypeLabel: UILabel!
     @IBOutlet weak var currentPriceLabel: UILabel!
     @IBOutlet weak var highlightBar: UIView!
