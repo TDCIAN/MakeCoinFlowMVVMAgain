@@ -107,8 +107,11 @@ extension NetworkManager {
         }
     }
     
-    static func requestCoinChartData(completion: @escaping (Result<[ChartData], Error>) -> Void) {
-        let param:RequestParam = .url(["fsym":"BTC", "tsym":"USD", "limit":"24"])
+    static func requestCoinChartData(coinType: CoinType, period: Period, completion: @escaping (Result<[ChartData], Error>) -> Void) {
+        let param:RequestParam = .url(["fsym":"\(coinType.rawValue)",
+                                       "tsym":"USD",
+                                       "limit":"\(period.limitParameter)",
+                                       "aggregate":"\(period.aggregateParameter)"])
         guard let coinChartDataURL = CoinChartDataRequest(period: .day, param: param).urlRequest()?.url else { return }
         AF.request(coinChartDataURL).responseJSON { response in
             switch response.result {
