@@ -9,8 +9,12 @@ import UIKit
 
 typealias CoinInfo = (key: CoinType, value: Coin)
 
+@IBOutlet weak var coinNameLabel: UILabel!
+@IBOutlet weak var chartViewForCollectionView: LineChartView!
 class ChartListViewController: UIViewController {
-
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var cc: UILabel!
+    
     @IBOutlet weak var chartCollectionView: UICollectionView!
     @IBOutlet weak var chartTableView: UITableView!
     @IBOutlet weak var chartTableViewHeight: NSLayoutConstraint!
@@ -26,6 +30,9 @@ class ChartListViewController: UIViewController {
         }
     }
     
+    var coinInfo: CoinInfo!
+    var chartDatas: [CoinChartInfo] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkManager.requestCoinList { result in
@@ -40,14 +47,6 @@ class ChartListViewController: UIViewController {
                 print("--> coin list error: \(error.localizedDescription)")
             }
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // 이 시점에 테이블뷰 컨텐츠사이즈 파악 후, 테이블뷰 높이를 조정하겠다
-        
-        
     }
 }
 
@@ -69,13 +68,14 @@ extension ChartListViewController {
 // MARK: - Collection View
 extension ChartListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return coinInfoList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChartCardCell", for: indexPath) as? ChartCardCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .randomColor()
+        let coinInfo = coinInfoList[indexPath.row]
+        cell.configCell(chartData: coinInfo)
         return cell
     }
 }
