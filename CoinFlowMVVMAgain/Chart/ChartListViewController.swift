@@ -89,9 +89,7 @@ extension ChartListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-class ChartCardCell: UICollectionViewCell {
 
-}
 
 // MARK: - Table View
 extension ChartListViewController: UITableViewDataSource {

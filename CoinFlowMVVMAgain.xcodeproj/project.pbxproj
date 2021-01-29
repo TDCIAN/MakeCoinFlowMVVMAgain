@@ -16,6 +16,7 @@
 		1844DA8625B78B9D001D3467 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844DA8425B78B9D001D3467 /* Setting.storyboard */; };
 		1844DA8925B79982001D3467 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844DA8825B79982001D3467 /* UIColor.swift */; };
 		186815E225C438AC00516C5B /* ChartXAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186815E125C438AC00516C5B /* ChartXAxisValueFormatter.swift */; };
+		186815E525C440F600516C5B /* ChartCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186815E425C440F600516C5B /* ChartCardCell.swift */; };
 		187C19A425B63BFD00FD8770 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19A325B63BFD00FD8770 /* AppDelegate.swift */; };
 		187C19A625B63BFD00FD8770 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C19A525B63BFD00FD8770 /* SceneDelegate.swift */; };
 		187C19AB25B63BFD00FD8770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187C19A925B63BFD00FD8770 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		1844DA8525B78B9D001D3467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CoinFlowMVVMAgain/Base.lproj/Setting.storyboard; sourceTree = SOURCE_ROOT; };
 		1844DA8825B79982001D3467 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		186815E125C438AC00516C5B /* ChartXAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartXAxisValueFormatter.swift; sourceTree = "<group>"; };
+		186815E425C440F600516C5B /* ChartCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCardCell.swift; sourceTree = "<group>"; };
 		187C19A025B63BFD00FD8770 /* CoinFlowMVVMAgain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinFlowMVVMAgain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		187C19A325B63BFD00FD8770 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		187C19A525B63BFD00FD8770 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				187C19C425B6412900FD8770 /* ChartDetailViewController.swift */,
 				18EF61BB25C22BD500817913 /* ChartListCell.swift */,
 				186815E125C438AC00516C5B /* ChartXAxisValueFormatter.swift */,
+				186815E425C440F600516C5B /* ChartCardCell.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				187DF01225C101080046F437 /* Request.swift in Sources */,
 				1844DA8925B79982001D3467 /* UIColor.swift in Sources */,
 				187C19B925B640A700FD8770 /* ChartListViewController.swift in Sources */,
+				186815E525C440F600516C5B /* ChartCardCell.swift in Sources */,
 				187C19A425B63BFD00FD8770 /* AppDelegate.swift in Sources */,
 				187DF01825C105C20046F437 /* CoinChartDataRequest.swift in Sources */,
 				1815B76E25C05BA100FE9235 /* NetworkManager.swift in Sources */,
