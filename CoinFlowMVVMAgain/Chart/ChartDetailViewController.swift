@@ -48,10 +48,41 @@ class ChartDetailViewController: UIViewController {
 extension ChartDetailViewController {
     
     private func fetchData() {
-        NetworkManager.requestCoinChartData { result in
+        NetworkManager.requestCoinChartData(coinType: coinInfo.key, period: .day) { result in
             switch result {
             case .success(let coinChartDatas):
                 print("--> coin chart data: \(coinChartDatas.count)")
+                self.chartDatas.append(CoinChartInfo(key: .day, value: coinChartDatas))
+            case .failure(let error):
+                print("--> coin chart error: \(error.localizedDescription)")
+            }
+        }
+        
+        NetworkManager.requestCoinChartData(coinType: coinInfo.key, period: .week) { result in
+            switch result {
+            case .success(let coinChartDatas):
+                print("--> coin chart data: \(coinChartDatas.count)")
+                self.chartDatas.append(CoinChartInfo(key: .week, value: coinChartDatas))
+            case .failure(let error):
+                print("--> coin chart error: \(error.localizedDescription)")
+            }
+        }
+        
+        NetworkManager.requestCoinChartData(coinType: coinInfo.key, period: .month) { result in
+            switch result {
+            case .success(let coinChartDatas):
+                print("--> coin chart data: \(coinChartDatas.count)")
+                self.chartDatas.append(CoinChartInfo(key: .month, value: coinChartDatas))
+            case .failure(let error):
+                print("--> coin chart error: \(error.localizedDescription)")
+            }
+        }
+        
+        NetworkManager.requestCoinChartData(coinType: coinInfo.key, period: .year) { result in
+            switch result {
+            case .success(let coinChartDatas):
+                print("--> coin chart data: \(coinChartDatas.count)")
+                self.chartDatas.append(CoinChartInfo(key: .year, value: coinChartDatas))
             case .failure(let error):
                 print("--> coin chart error: \(error.localizedDescription)")
             }
