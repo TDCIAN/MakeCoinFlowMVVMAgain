@@ -48,8 +48,12 @@ class ChartDetailViewController: UIViewController {
 extension ChartDetailViewController {
     
     private func fetchData() {
+        let dispatchGroup = DispatchGroup()
+        
         Period.allCases.forEach { period in
+            dispatchGroup.enter()
             NetworkManager.requestCoinChartData(coinType: coinInfo.key, period: period) { result in
+                dispatchGroup.leave()
                 switch result {
                 case .success(let coinChartDatas):
                     print("--> coin chart data -> period: \(period): \(coinChartDatas.count)")
@@ -58,6 +62,10 @@ extension ChartDetailViewController {
                     print("--> coin chart error: \(error.localizedDescription)")
                 }
             }
+        }
+        dispatchGroup.notify(queue: .main) {
+            print("--> 다 받았으니 차트를 렌더하자 -> \(self.chartDatas.count)")
+            self.renderChart(with: self.selectedPeriod)
         }
     }
     
@@ -68,5 +76,9 @@ extension ChartDetailViewController {
     
     private func moveHighlightBar(to button: UIButton) {
         self.highlightBarLeading.constant = button.frame.minX
+    }
+    
+    private func renderChart(with period: Period) {
+        // 선택된 피리어드로 렌더링
     }
 }
