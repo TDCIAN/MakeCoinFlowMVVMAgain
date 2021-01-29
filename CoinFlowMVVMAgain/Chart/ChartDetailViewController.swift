@@ -6,12 +6,12 @@
 //
 
 import UIKit
+import Charts
 
 typealias CoinChartInfo = (key: Period, value: [ChartData])
 class ChartDetailViewController: UIViewController {
     
     var coinInfo: CoinInfo!
-    
     var chartDatas: [CoinChartInfo] = []
     var selectedPeriod: Period = .day
     
@@ -19,6 +19,8 @@ class ChartDetailViewController: UIViewController {
     @IBOutlet weak var currentPriceLabel: UILabel!
     @IBOutlet weak var highlightBar: UIView!
     @IBOutlet weak var highlightBarLeading: NSLayoutConstraint!
+    
+    @IBOutlet weak var chartView: LineChartView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +34,19 @@ class ChartDetailViewController: UIViewController {
         print("--> 꽂힌 정보는: \(coinInfo.key)")
     }
     @IBAction func dailyButtonTapped(_ sender: UIButton) {
+        renderChart(with: .day)
         moveHighlightBar(to: sender)
     }
     @IBAction func weeklyButtonTapped(_ sender: UIButton) {
+        renderChart(with: .week)
         moveHighlightBar(to: sender)
     }
     @IBAction func monthlyButtonTapped(_ sender: UIButton) {
+        renderChart(with: .month)
         moveHighlightBar(to: sender)
     }
     @IBAction func yearlyButtonTapped(_ sender: UIButton) {
+        renderChart(with: .year)
         moveHighlightBar(to: sender)
     }
 }
@@ -80,5 +86,6 @@ extension ChartDetailViewController {
     
     private func renderChart(with period: Period) {
         // 선택된 피리어드로 렌더링
+        print("rendering with \(period)")
     }
 }

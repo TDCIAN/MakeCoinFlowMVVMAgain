@@ -315,7 +315,7 @@
                                     <constraint firstItem="Gbw-rc-yKF" firstAttribute="width" secondItem="je4-Of-Z5m" secondAttribute="width" multiplier="0.25" id="sHR-H6-qGE"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXa-04-pg8">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXa-04-pg8" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="558" width="414" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -339,6 +339,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="CvJ-aP-SuB"/>
                     <connections>
+                        <outlet property="chartView" destination="ZXa-04-pg8" id="S7z-I3-qlO"/>
                         <outlet property="coinTypeLabel" destination="2IE-7v-fU6" id="h6I-az-cE3"/>
                         <outlet property="currentPriceLabel" destination="Gwi-g2-QwL" id="3gL-yp-aaQ"/>
                         <outlet property="highlightBar" destination="c6Q-db-KhO" id="du1-f5-wFR"/>
