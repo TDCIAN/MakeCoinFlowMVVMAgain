@@ -87,8 +87,8 @@
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <connections>
-                                                    <outlet property="chartViewForCollectionView" destination="BYa-Jd-puC" id="Ma5-IA-wB9"/>
-                                                    <outlet property="coinNameLabel" destination="mmO-nV-fq2" id="dMk-la-oJA"/>
+                                                    <outlet property="chartViewForCardCell" destination="BYa-Jd-puC" id="RUf-kZ-tlK"/>
+                                                    <outlet property="coinNameLabel" destination="mmO-nV-fq2" id="9MH-AF-zrc"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
