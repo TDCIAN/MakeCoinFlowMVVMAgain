@@ -9,8 +9,6 @@ import UIKit
 
 typealias CoinInfo = (key: CoinType, value: Coin)
 
-@IBOutlet weak var coinNameLabel: UILabel!
-@IBOutlet weak var chartViewForCollectionView: LineChartView!
 class ChartListViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var cc: UILabel!
@@ -75,7 +73,7 @@ extension ChartListViewController: UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChartCardCell", for: indexPath) as? ChartCardCell else { return UICollectionViewCell() }
         let coinInfo = coinInfoList[indexPath.row]
-        cell.configCell(chartData: coinInfo)
+        cell.configCell(coinInfo: coinInfo)
         return cell
     }
 }
