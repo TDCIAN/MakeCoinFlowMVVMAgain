@@ -11,6 +11,7 @@
 		1815B76625C0596B00FE9235 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815B76525C0596B00FE9235 /* ChartData.swift */; };
 		1815B76925C0597300FE9235 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815B76825C0597300FE9235 /* Article.swift */; };
 		1815B76E25C05BA100FE9235 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815B76D25C05BA100FE9235 /* NetworkManager.swift */; };
+		1833380B25C7691600CFFB7F /* ChartDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833380A25C7691600CFFB7F /* ChartDetailViewModel.swift */; };
 		1844DA7F25B78B6F001D3467 /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844DA7D25B78B6F001D3467 /* Chart.storyboard */; };
 		1844DA8225B78B8D001D3467 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844DA8125B78B8D001D3467 /* News.storyboard */; };
 		1844DA8625B78B9D001D3467 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844DA8425B78B9D001D3467 /* Setting.storyboard */; };
@@ -43,6 +44,7 @@
 		1815B76525C0596B00FE9235 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		1815B76825C0597300FE9235 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		1815B76D25C05BA100FE9235 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		1833380A25C7691600CFFB7F /* ChartDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDetailViewModel.swift; sourceTree = "<group>"; };
 		183AB11525B91C5600E8B0C0 /* API_TEST.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = API_TEST.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1844DA7E25B78B6F001D3467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CoinFlowMVVMAgain/Base.lproj/Chart.storyboard; sourceTree = SOURCE_ROOT; };
 		1844DA8125B78B8D001D3467 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = SOURCE_ROOT; };
@@ -188,6 +190,7 @@
 				18EF61BB25C22BD500817913 /* ChartListCell.swift */,
 				186815E125C438AC00516C5B /* ChartXAxisValueFormatter.swift */,
 				186815E425C440F600516C5B /* ChartCardCell.swift */,
+				1833380A25C7691600CFFB7F /* ChartDetailViewModel.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				1815B76925C0597300FE9235 /* Article.swift in Sources */,
 				1815B76625C0596B00FE9235 /* ChartData.swift in Sources */,
 				1815B76225C0596400FE9235 /* CoinData.swift in Sources */,
+				1833380B25C7691600CFFB7F /* ChartDetailViewModel.swift in Sources */,
 				187DF01B25C106090046F437 /* Period.swift in Sources */,
 				187C19BC25B640B100FD8770 /* NewsViewController.swift in Sources */,
 				187C19A625B63BFD00FD8770 /* SceneDelegate.swift in Sources */,

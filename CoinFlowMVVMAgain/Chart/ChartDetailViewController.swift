@@ -11,10 +11,6 @@ import Charts
 typealias CoinChartInfo = (key: Period, value: [ChartData])
 class ChartDetailViewController: UIViewController {
     
-//    var coinInfo: CoinInfo!
-//    var chartDatas: [CoinChartInfo] = []
-//    var selectedPeriod: Period = .day
-    
     @IBOutlet weak var coinTypeLabel: UILabel!
     @IBOutlet weak var currentPriceLabel: UILabel!
     @IBOutlet weak var highlightBar: UIView!
@@ -27,15 +23,10 @@ class ChartDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateCoinInfo(viewModel)
-//        fetchData()
         // -> changeHandler에 대한 업데이트
-//        viewModel.updateNotify { chartDatas, selectedPeriod) in
-//            self.renderChart(with: chartDatas, period: selectedPeriod)
-//        }
         viewModel.updateNotify { chartDatas, selectedPeriod in
             self.renderChart(with: chartDatas, period: selectedPeriod)
         }
-        
         viewModel.fetchData()
     }
     
@@ -48,7 +39,6 @@ class ChartDetailViewController: UIViewController {
         let datas = viewModel.chartDatas
         let selectedPeriod = viewModel.selectedPeriod
         renderChart(with: datas, period: selectedPeriod)
-//        renderChart(with: .day)
         moveHighlightBar(to: sender)
     }
     @IBAction func weeklyButtonTapped(_ sender: UIButton) {
@@ -56,7 +46,6 @@ class ChartDetailViewController: UIViewController {
         let datas = viewModel.chartDatas
         let selectedPeriod = viewModel.selectedPeriod
         renderChart(with: datas, period: selectedPeriod)
-//        renderChart(with: .week)
         moveHighlightBar(to: sender)
     }
     @IBAction func monthlyButtonTapped(_ sender: UIButton) {
@@ -64,7 +53,6 @@ class ChartDetailViewController: UIViewController {
         let datas = viewModel.chartDatas
         let selectedPeriod = viewModel.selectedPeriod
         renderChart(with: datas, period: selectedPeriod)
-//        renderChart(with: .month)
         moveHighlightBar(to: sender)
     }
     @IBAction func yearlyButtonTapped(_ sender: UIButton) {
@@ -72,39 +60,11 @@ class ChartDetailViewController: UIViewController {
         let datas = viewModel.chartDatas
         let selectedPeriod = viewModel.selectedPeriod
         renderChart(with: datas, period: selectedPeriod)
-//        renderChart(with: .year)
         moveHighlightBar(to: sender)
     }
 }
 
 extension ChartDetailViewController {
-    
-//    private func fetchData() {
-//        let dispatchGroup = DispatchGroup()
-//
-//        Period.allCases.forEach { period in
-//            dispatchGroup.enter()
-//            NetworkManager.requestCoinChartData(coinType: coinInfo.key, period: period) { result in
-//                dispatchGroup.leave()
-//                switch result {
-//                case .success(let coinChartDatas):
-//                    print("--> coin chart data -> period: \(period): \(coinChartDatas.count)")
-//                    self.chartDatas.append(CoinChartInfo(key: period, value: coinChartDatas))
-//                case .failure(let error):
-//                    print("--> coin chart error: \(error.localizedDescription)")
-//                }
-//            }
-//        }
-//        dispatchGroup.notify(queue: .main) {
-//            print("--> 다 받았으니 차트를 렌더하자 -> \(self.chartDatas.count)")
-//            self.renderChart(with: self.selectedPeriod)
-//        }
-//    }
-    
-//    private func updateCoinInfo(coinInfo: CoinInfo) {
-//        coinTypeLabel.text = "\(coinInfo.key)"
-//        currentPriceLabel.text = String(format: "%.1f", coinInfo.value.usd.price)
-//    }
     private func updateCoinInfo(_ viewModel: ChartDetailViewModel) {
         coinTypeLabel.text = "\(viewModel.coinInfo.key)"
         currentPriceLabel.text = String(format: "%.1f", viewModel.coinInfo.value.usd.price)
@@ -189,7 +149,6 @@ extension ChartDetailViewController {
         // Legend
         let legend = chartView.legend
         legend.enabled = false
-        
     }
 }
 
@@ -211,47 +170,4 @@ extension ChartDetailViewController: ChartViewDelegate {
     }
 }
 
-class ChartDetailViewModel {
-    // 차트 그림 그릴 때 필요한 요소들을 핸들러에 담는다
-    typealias Handler = ([CoinChartInfo], Period) -> Void
-    var changeHandler: Handler
-    
-    var coinInfo: CoinInfo!
-    var chartDatas: [CoinChartInfo] = []
-    var selectedPeriod: Period = .day
-    
-    init(coinInfo: CoinInfo, chartDatas: [CoinChartInfo], selectedPeriod: Period, changeHandler: @escaping Handler) {
-        self.coinInfo = coinInfo
-        self.chartDatas = chartDatas
-        self.selectedPeriod = selectedPeriod
-        self.changeHandler = changeHandler
-    }
-}
 
-extension ChartDetailViewModel {
-    func fetchData() {
-        let dispatchGroup = DispatchGroup()
-        
-        Period.allCases.forEach { period in
-            dispatchGroup.enter()
-            NetworkManager.requestCoinChartData(coinType: coinInfo.key, period: period) { result in
-                dispatchGroup.leave()
-                switch result {
-                case .success(let coinChartDatas):
-                    print("--> coin chart data -> period: \(period): \(coinChartDatas.count)")
-                    self.chartDatas.append(CoinChartInfo(key: period, value: coinChartDatas))
-                case .failure(let error):
-                    print("--> coin chart error: \(error.localizedDescription)")
-                }
-            }
-        }
-        dispatchGroup.notify(queue: .main) {
-            print("--> 다 받았으니 차트를 렌더하자 -> \(self.chartDatas.count)")
-            self.changeHandler(self.chartDatas, self.selectedPeriod)
-        }
-    }
-    
-    func updateNotify(handler: @escaping Handler) {
-        self.changeHandler = handler
-    }
-}
