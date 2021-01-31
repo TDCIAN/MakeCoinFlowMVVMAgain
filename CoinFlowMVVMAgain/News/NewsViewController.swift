@@ -8,6 +8,13 @@
 import UIKit
 
 class NewsViewController: UIViewController {
+    
+    @IBOutlet weak var newsTableView: UITableView!
+    var articles: [Article] = [] {
+        didSet {
+            self.newsTableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +22,8 @@ class NewsViewController: UIViewController {
         NetworkManager.requestNewsList { result in
             switch result {
             case .success(let articles):
-                print("--> article list: \(articles.count)")
+//                print("--> article list: \(articles.count)")
+                self.articles = articles
             case .failure(let error):
                 print("--> article error: \(error.localizedDescription)")
             }
@@ -25,13 +33,14 @@ class NewsViewController: UIViewController {
 
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsListCell", for: indexPath) as? NewsListCell else { return UITableViewCell()
         }
-        cell.backgroundColor = .randomColor()
+        let article = articles[indexPath.row]
+        cell.configCell(article: article)
         return cell
     }
     
@@ -39,5 +48,17 @@ extension NewsViewController: UITableViewDataSource {
 }
 
 class NewsListCell: UITableViewCell {
+    @IBOutlet weak var thumnail: UIImageView!
+    @IBOutlet weak var newsTitle: UILabel!
+    @IBOutlet weak var newsDate: UILabel!
+    
+    func configCell(article: Article) {
+        newsTitle.text = article.title
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        newsDate.text = formatter.string(from: Date(timeIntervalSince1970: article.timestamp))
+        
+    }
     
 }

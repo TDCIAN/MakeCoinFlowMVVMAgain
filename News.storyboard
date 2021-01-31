@@ -34,26 +34,37 @@
                                                         <constraint firstAttribute="width" constant="80" id="5ml-5F-PlC"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okC-cH-B1H">
-                                                    <rect key="frame" x="121" y="11" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okC-cH-B1H">
+                                                    <rect key="frame" x="110" y="10" width="78" height="50.5"/>
+                                                    <string key="text">Hello World
+2nd line
+3rd line</string>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sp2-vH-i7u">
-                                                    <rect key="frame" x="121" y="59" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17 Nov 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sp2-vH-i7u">
+                                                    <rect key="frame" x="110" y="74" width="73" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
+                                                    <color key="textColor" systemColor="systemGray2Color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hcd-bk-3rh" firstAttribute="centerY" secondItem="ssU-bN-tPM" secondAttribute="centerY" id="2XW-ji-R24"/>
+                                                <constraint firstItem="okC-cH-B1H" firstAttribute="leading" secondItem="hcd-bk-3rh" secondAttribute="trailing" constant="10" id="41Y-aj-RJC"/>
                                                 <constraint firstItem="hcd-bk-3rh" firstAttribute="leading" secondItem="ssU-bN-tPM" secondAttribute="leading" constant="20" symbolic="YES" id="Avy-mb-IaR"/>
+                                                <constraint firstItem="sp2-vH-i7u" firstAttribute="leading" secondItem="hcd-bk-3rh" secondAttribute="trailing" constant="10" id="XZh-cs-bOg"/>
+                                                <constraint firstItem="okC-cH-B1H" firstAttribute="top" secondItem="hcd-bk-3rh" secondAttribute="top" id="bH8-54-ohz"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="okC-cH-B1H" secondAttribute="trailing" constant="30" id="dYe-ig-Oya"/>
+                                                <constraint firstItem="sp2-vH-i7u" firstAttribute="bottom" secondItem="hcd-bk-3rh" secondAttribute="bottom" id="vhx-Ux-T7z"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="newsDate" destination="sp2-vH-i7u" id="aaB-UA-bc3"/>
+                                            <outlet property="newsTitle" destination="okC-cH-B1H" id="KsE-sL-l43"/>
+                                            <outlet property="thumnail" destination="hcd-bk-3rh" id="mlp-gl-O3K"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -72,6 +83,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="News" id="NfV-Go-USE"/>
+                    <connections>
+                        <outlet property="newsTableView" destination="jTC-mF-ZgT" id="Ox3-Tx-9e2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqP-vw-gYC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,6 +115,9 @@
         <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
