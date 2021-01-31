@@ -108,11 +108,12 @@ class ChartCardCell: UICollectionViewCell, ChartViewDelegate {
             dispatchGroup.leave()
             switch result {
             case .success(let coinChartDatas):
-                self.chartDatas.append(CoinChartInfo(key: Period.day, value: coinChartDatas))
+                self.chartDatas.append(CoinChartInfo(key: Period.week, value: coinChartDatas))
             case .failure(let error):
                 print("--> Card cell fetch data error: \(error.localizedDescription)")
             }
         }
+
         dispatchGroup.notify(queue: .main) {
             print("--> Card cell에서 차트 렌더: \(self.chartDatas.count)")
             self.renderChart()
