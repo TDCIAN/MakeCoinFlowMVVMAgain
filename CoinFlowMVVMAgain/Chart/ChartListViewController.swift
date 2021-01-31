@@ -69,8 +69,14 @@ extension ChartListViewController: UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChartCardCell", for: indexPath) as? ChartCardCell else { return UICollectionViewCell() }
         let coinInfo = coinInfoList[indexPath.row]
-        cell.updateCoinInfo(coinInfo: coinInfo)
-        cell.fetchData()
+        cell.viewModel = ChartCardCellViewModel(coinInfo: coinInfo, chartDatas: [], selectedPeriod: .week, changeHandler: { _, _ in })
+        cell.viewModel.updateNotify { chartDatas, selectedPeriod in
+            cell.renderChart(with: chartDatas, period: selectedPeriod)
+        }
+        cell.viewModel.fetchData()
+        cell.updateCoinInfo(cell.viewModel)
+//        cell.updateCoinInfo(coinInfo: coinInfo)
+//        cell.fetchData()
         return cell
     }
 }
