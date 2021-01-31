@@ -86,10 +86,17 @@ extension ChartListViewController: UICollectionViewDelegateFlowLayout {
         let height: CGFloat = 200
         return CGSize(width: width, height: height)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("콜렉션뷰디드셀렉트: \(indexPath.row)")
+        let coinInfo = coinInfoList[indexPath.row]
+        showDetail(coinInfo: coinInfo)
+    }
 }
 
 class ChartCardCell: UICollectionViewCell, ChartViewDelegate {
     @IBOutlet weak var coinNameLabel: UILabel!
+    @IBOutlet weak var lastChangeLabel: UILabel!
     @IBOutlet weak var chartViewForCardCell: LineChartView!
     
     var coinInfo: CoinInfo!
@@ -98,7 +105,21 @@ class ChartCardCell: UICollectionViewCell, ChartViewDelegate {
     
     func updateCoinInfo(coinInfo: CoinInfo) {
         self.coinInfo = coinInfo
+        var periodString = "24H"
         coinNameLabel.text = coinInfo.key.rawValue
+        switch selecedPeriod.rawValue {
+        case "day":
+            periodString = "24H"
+        case "week":
+            periodString = "1 Week"
+        case "month":
+            periodString = "1 Month"
+        case "year":
+            periodString = "1 Year"
+        default:
+            periodString = "24H"
+        }
+        lastChangeLabel.text = "Last \(periodString)"
     }
     
     func fetchData() {
@@ -143,7 +164,7 @@ class ChartCardCell: UICollectionViewCell, ChartViewDelegate {
         // -- draw y value
         lineChartDataSet.drawValuesEnabled = false
         // -- highlight when user touch
-        lineChartDataSet.highlightEnabled = true
+        lineChartDataSet.highlightEnabled = false
         lineChartDataSet.drawHorizontalHighlightIndicatorEnabled = false
         lineChartDataSet.highlightColor = UIColor.systemBlue
         
@@ -181,9 +202,10 @@ class ChartCardCell: UICollectionViewCell, ChartViewDelegate {
         
         // User InterAction
         chartViewForCardCell.doubleTapToZoomEnabled = false
-        chartViewForCardCell.dragEnabled = true
+        chartViewForCardCell.dragEnabled = false
         
         chartViewForCardCell.delegate = self
+        chartViewForCardCell.isUserInteractionEnabled = false
         
         // Chart Description
         let description = Description()

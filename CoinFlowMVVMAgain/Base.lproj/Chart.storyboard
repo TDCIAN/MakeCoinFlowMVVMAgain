@@ -89,6 +89,7 @@
                                                 <connections>
                                                     <outlet property="chartViewForCardCell" destination="BYa-Jd-puC" id="RUf-kZ-tlK"/>
                                                     <outlet property="coinNameLabel" destination="mmO-nV-fq2" id="9MH-AF-zrc"/>
+                                                    <outlet property="lastChangeLabel" destination="5X9-Ww-VsJ" id="VZl-9D-gJg"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
