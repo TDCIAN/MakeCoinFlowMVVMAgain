@@ -28,6 +28,14 @@ class ChartDetailViewController: UIViewController {
         super.viewDidLoad()
         updateCoinInfo(viewModel)
 //        fetchData()
+        // -> changeHandler에 대한 업데이트
+//        viewModel.updateNotify { chartDatas, selectedPeriod) in
+//            self.renderChart(with: chartDatas, period: selectedPeriod)
+//        }
+        viewModel.updateNotify { chartDatas, selectedPeriod in
+            self.renderChart(with: chartDatas, period: selectedPeriod)
+        }
+        
         viewModel.fetchData()
     }
     
@@ -36,19 +44,35 @@ class ChartDetailViewController: UIViewController {
 
     }
     @IBAction func dailyButtonTapped(_ sender: UIButton) {
-        renderChart(with: .day)
+        viewModel.selectedPeriod = .day
+        let datas = viewModel.chartDatas
+        let selectedPeriod = viewModel.selectedPeriod
+        renderChart(with: datas, period: selectedPeriod)
+//        renderChart(with: .day)
         moveHighlightBar(to: sender)
     }
     @IBAction func weeklyButtonTapped(_ sender: UIButton) {
-        renderChart(with: .week)
+        viewModel.selectedPeriod = .week
+        let datas = viewModel.chartDatas
+        let selectedPeriod = viewModel.selectedPeriod
+        renderChart(with: datas, period: selectedPeriod)
+//        renderChart(with: .week)
         moveHighlightBar(to: sender)
     }
     @IBAction func monthlyButtonTapped(_ sender: UIButton) {
-        renderChart(with: .month)
+        viewModel.selectedPeriod = .month
+        let datas = viewModel.chartDatas
+        let selectedPeriod = viewModel.selectedPeriod
+        renderChart(with: datas, period: selectedPeriod)
+//        renderChart(with: .month)
         moveHighlightBar(to: sender)
     }
     @IBAction func yearlyButtonTapped(_ sender: UIButton) {
-        renderChart(with: .year)
+        viewModel.selectedPeriod = .year
+        let datas = viewModel.chartDatas
+        let selectedPeriod = viewModel.selectedPeriod
+        renderChart(with: datas, period: selectedPeriod)
+//        renderChart(with: .year)
         moveHighlightBar(to: sender)
     }
 }
@@ -90,7 +114,7 @@ extension ChartDetailViewController {
         self.highlightBarLeading.constant = button.frame.minX
     }
     
-    private func renderChart(with period: Period) {
+    private func renderChart(with chartDatas: [CoinChartInfo], period: Period) {
         print("rendering with \(period)")
         
         // 데이터 가져오기
@@ -188,6 +212,7 @@ extension ChartDetailViewController: ChartViewDelegate {
 }
 
 class ChartDetailViewModel {
+    // 차트 그림 그릴 때 필요한 요소들을 핸들러에 담는다
     typealias Handler = ([CoinChartInfo], Period) -> Void
     var changeHandler: Handler
     
@@ -224,5 +249,9 @@ extension ChartDetailViewModel {
             print("--> 다 받았으니 차트를 렌더하자 -> \(self.chartDatas.count)")
             self.changeHandler(self.chartDatas, self.selectedPeriod)
         }
+    }
+    
+    func updateNotify(handler: @escaping Handler) {
+        self.changeHandler = handler
     }
 }
