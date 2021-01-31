@@ -32,6 +32,7 @@
 		187DF01825C105C20046F437 /* CoinChartDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DF01725C105C20046F437 /* CoinChartDataRequest.swift */; };
 		187DF01B25C106090046F437 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DF01A25C106090046F437 /* Period.swift */; };
 		187DF01E25C107CD0046F437 /* NewsListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DF01D25C107CD0046F437 /* NewsListRequest.swift */; };
+		188C7D4A25C6F81100933E6D /* NewsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C7D4925C6F81100933E6D /* NewsListCell.swift */; };
 		18EF61BC25C22BD500817913 /* ChartListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF61BB25C22BD500817913 /* ChartListCell.swift */; };
 		8FD081D59C1FCF8EB73DDF88 /* Pods_CoinFlowMVVMAgain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2066E1A9B19D50FBCFA13B48 /* Pods_CoinFlowMVVMAgain.framework */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		187DF01725C105C20046F437 /* CoinChartDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinChartDataRequest.swift; sourceTree = "<group>"; };
 		187DF01A25C106090046F437 /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		187DF01D25C107CD0046F437 /* NewsListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListRequest.swift; sourceTree = "<group>"; };
+		188C7D4925C6F81100933E6D /* NewsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListCell.swift; sourceTree = "<group>"; };
 		18EF61B925C21D5100817913 /* ZIP_TEST.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ZIP_TEST.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		18EF61BB25C22BD500817913 /* ChartListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartListCell.swift; sourceTree = "<group>"; };
 		2066E1A9B19D50FBCFA13B48 /* Pods_CoinFlowMVVMAgain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinFlowMVVMAgain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 			children = (
 				1844DA8125B78B8D001D3467 /* News.storyboard */,
 				187C19BB25B640B100FD8770 /* NewsViewController.swift */,
+				188C7D4925C6F81100933E6D /* NewsListCell.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				186815E225C438AC00516C5B /* ChartXAxisValueFormatter.swift in Sources */,
 				18EF61BC25C22BD500817913 /* ChartListCell.swift in Sources */,
 				187C19C525B6412900FD8770 /* ChartDetailViewController.swift in Sources */,
+				188C7D4A25C6F81100933E6D /* NewsListCell.swift in Sources */,
 				187DF01225C101080046F437 /* Request.swift in Sources */,
 				1844DA8925B79982001D3467 /* UIColor.swift in Sources */,
 				187C19B925B640A700FD8770 /* ChartListViewController.swift in Sources */,

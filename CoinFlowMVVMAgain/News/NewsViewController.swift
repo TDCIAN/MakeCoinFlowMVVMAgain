@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Kingfisher
+import SafariServices
 
 class NewsViewController: UIViewController {
     
@@ -46,23 +46,25 @@ extension NewsViewController: UITableViewDataSource {
         cell.configCell(article: article)
         return cell
     }
-    
-    
 }
 
-class NewsListCell: UITableViewCell {
-    @IBOutlet weak var thumnail: UIImageView!
-    @IBOutlet weak var newsTitle: UILabel!
-    @IBOutlet weak var newsDate: UILabel!
-    
-    func configCell(article: Article) {
-        let url = URL(string: article.imageURL)!
-        thumnail.kf.setImage(with: url)
-        newsTitle.text = article.title
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        newsDate.text = formatter.string(from: Date(timeIntervalSince1970: article.timestamp))
+extension NewsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let article = articles[indexPath.row]
+        guard let articleURL = URL(string: article.link) else { return }
+        
+        let config = SFSafariViewController.Configuration()
+        config.entersReaderIfAvailable = true
+        let safari = SFSafariViewController(url: articleURL, configuration: config)
+        
+        safari.preferredBarTintColor = UIColor.white
+        safari.preferredControlTintColor = UIColor.systemBlue
+        
+        present(safari, animated: true, completion: nil)
         
     }
-    
 }
+
+
+
+
