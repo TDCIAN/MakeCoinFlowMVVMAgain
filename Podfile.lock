@@ -3,24 +3,28 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
+  - Kingfisher (6.0.1)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - Charts
+  - Kingfisher
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Charts
+    - Kingfisher
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  Kingfisher: adde87a4f74f6a3845395769354efff593581740
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 0fa68e5036a60fd30c54f2cf900bc30a29e37f2d
+PODFILE CHECKSUM: 72c9a4a8d0bee329641044c46f05073ecbc66456
 
 COCOAPODS: 1.10.0
