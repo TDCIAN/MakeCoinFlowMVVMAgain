@@ -12,6 +12,8 @@
 		1815B76925C0597300FE9235 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815B76825C0597300FE9235 /* Article.swift */; };
 		1815B76E25C05BA100FE9235 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815B76D25C05BA100FE9235 /* NetworkManager.swift */; };
 		1833380B25C7691600CFFB7F /* ChartDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833380A25C7691600CFFB7F /* ChartDetailViewModel.swift */; };
+		1833380E25C773B300CFFB7F /* ChartCardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833380D25C773B300CFFB7F /* ChartCardCellViewModel.swift */; };
+		1833381225C77B3100CFFB7F /* ChartListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833381125C77B3100CFFB7F /* ChartListViewModel.swift */; };
 		1844DA7F25B78B6F001D3467 /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844DA7D25B78B6F001D3467 /* Chart.storyboard */; };
 		1844DA8225B78B8D001D3467 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844DA8125B78B8D001D3467 /* News.storyboard */; };
 		1844DA8625B78B9D001D3467 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1844DA8425B78B9D001D3467 /* Setting.storyboard */; };
@@ -45,6 +47,8 @@
 		1815B76825C0597300FE9235 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		1815B76D25C05BA100FE9235 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1833380A25C7691600CFFB7F /* ChartDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDetailViewModel.swift; sourceTree = "<group>"; };
+		1833380D25C773B300CFFB7F /* ChartCardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCardCellViewModel.swift; sourceTree = "<group>"; };
+		1833381125C77B3100CFFB7F /* ChartListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartListViewModel.swift; sourceTree = "<group>"; };
 		183AB11525B91C5600E8B0C0 /* API_TEST.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = API_TEST.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1844DA7E25B78B6F001D3467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CoinFlowMVVMAgain/Base.lproj/Chart.storyboard; sourceTree = SOURCE_ROOT; };
 		1844DA8125B78B8D001D3467 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = SOURCE_ROOT; };
@@ -186,11 +190,13 @@
 			children = (
 				1844DA7D25B78B6F001D3467 /* Chart.storyboard */,
 				187C19B825B640A700FD8770 /* ChartListViewController.swift */,
+				1833381125C77B3100CFFB7F /* ChartListViewModel.swift */,
 				187C19C425B6412900FD8770 /* ChartDetailViewController.swift */,
+				1833380A25C7691600CFFB7F /* ChartDetailViewModel.swift */,
 				18EF61BB25C22BD500817913 /* ChartListCell.swift */,
 				186815E125C438AC00516C5B /* ChartXAxisValueFormatter.swift */,
 				186815E425C440F600516C5B /* ChartCardCell.swift */,
-				1833380A25C7691600CFFB7F /* ChartDetailViewModel.swift */,
+				1833380D25C773B300CFFB7F /* ChartCardCellViewModel.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 				187DF01225C101080046F437 /* Request.swift in Sources */,
 				1844DA8925B79982001D3467 /* UIColor.swift in Sources */,
 				187C19B925B640A700FD8770 /* ChartListViewController.swift in Sources */,
+				1833380E25C773B300CFFB7F /* ChartCardCellViewModel.swift in Sources */,
 				186815E525C440F600516C5B /* ChartCardCell.swift in Sources */,
 				187C19A425B63BFD00FD8770 /* AppDelegate.swift in Sources */,
 				187DF01825C105C20046F437 /* CoinChartDataRequest.swift in Sources */,
@@ -351,6 +358,7 @@
 				187DF00E25C100F90046F437 /* EndPoint.swift in Sources */,
 				187DF01E25C107CD0046F437 /* NewsListRequest.swift in Sources */,
 				187DF01525C104D80046F437 /* CoinListRequest.swift in Sources */,
+				1833381225C77B3100CFFB7F /* ChartListViewModel.swift in Sources */,
 				187C19BF25B640BA00FD8770 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

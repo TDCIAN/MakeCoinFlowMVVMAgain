@@ -16,7 +16,6 @@ class ChartCardCell: UICollectionViewCell, ChartViewDelegate {
     var viewModel: ChartCardCellViewModel!
     
     func updateCoinInfo(_ viewModel: ChartCardCellViewModel) {
-//        self.coinInfo = viewModel.coinInfo
         var periodString = "24H"
         coinNameLabel.text = viewModel.coinInfo.key.rawValue
         switch viewModel.selectedPeriod.rawValue {
@@ -34,25 +33,7 @@ class ChartCardCell: UICollectionViewCell, ChartViewDelegate {
         lastChangeLabel.text = "Last \(periodString)"
     }
     
-//    func updateCoinInfo(coinInfo: CoinInfo) {
-//        self.coinInfo = coinInfo
-//        var periodString = "24H"
-//        coinNameLabel.text = coinInfo.key.rawValue
-//        switch selecedPeriod.rawValue {
-//        case "day":
-//            periodString = "24H"
-//        case "week":
-//            periodString = "1 Week"
-//        case "month":
-//            periodString = "1 Month"
-//        case "year":
-//            periodString = "1 Year"
-//        default:
-//            periodString = "24H"
-//        }
-//        lastChangeLabel.text = "Last \(periodString)"
-//    }
-    
+
     func renderChart(with chartDatas: [CoinChartInfo], period: Period) {
         // 데이터 가져오기
         guard let coinChartData = chartDatas.first(where: { $0.key == Period.week })?.value else { return }
@@ -139,44 +120,3 @@ class ChartCardCell: UICollectionViewCell, ChartViewDelegate {
     }
 }
 
-class ChartCardCellViewModel {
-    typealias Handler = ([CoinChartInfo], Period) -> Void
-    var changeHandler: Handler
-    
-    var coinInfo: CoinInfo!
-    var chartDatas: [CoinChartInfo] = []
-    var selectedPeriod: Period = .week
-    
-    init(coinInfo: CoinInfo, chartDatas: [CoinChartInfo], selectedPeriod: Period, changeHandler: @escaping Handler) {
-        self.coinInfo = coinInfo
-        self.chartDatas = chartDatas
-        self.selectedPeriod = selectedPeriod
-        self.changeHandler = changeHandler
-    }
-}
-
-extension ChartCardCellViewModel {
-    func fetchData() {
-        let dispatchGroup = DispatchGroup()
-        dispatchGroup.enter()
-        NetworkManager.requestCoinChartData(coinType: coinInfo.key, period: .week) { result in
-            dispatchGroup.leave()
-            switch result {
-            case .success(let coinChartDatas):
-                self.chartDatas.append(CoinChartInfo(key: Period.week, value: coinChartDatas))
-            case .failure(let error):
-                print("--> Card cell fetch data error: \(error.localizedDescription)")
-            }
-        }
-
-        dispatchGroup.notify(queue: .main) {
-            print("--> Card cell에서 차트 렌더: \(self.chartDatas.count)")
-//            self.renderChart()
-            self.changeHandler(self.chartDatas, self.selectedPeriod)
-        }
-    }
-    
-    func updateNotify(handler: @escaping Handler) {
-        self.changeHandler = handler
-    }
-}
